@@ -6,6 +6,7 @@ Publishes waypoints and trajectory for visualization in RViz.
 
 import os
 import yaml
+import time
 from typing import List
 
 import rclpy
@@ -40,8 +41,14 @@ class VisualizerNode(Node):
             data_dir_param
         )
         
+        # File path and modification tracking (for hot-reload)
+        self.file_path = os.path.join(self.data_dir, self.waypoints_file)
+        self.last_mtime = 0.0
+        
         # Waypoints data
         self.waypoints_data = None
+        self.last_num_waypoints = 0  # Track number of waypoints for cleanup on reload
+        self.max_markers_ever_published = 0  # Track max markers for complete cleanup
         
         # Load waypoints
         self.load_waypoints()
@@ -69,14 +76,12 @@ class VisualizerNode(Node):
 
     def load_waypoints(self) -> bool:
         """Load waypoints from YAML file"""
-        file_path = os.path.join(self.data_dir, self.waypoints_file)
-        
-        if not os.path.exists(file_path):
-            self.get_logger().warn(f'Waypoints file not found: {file_path}')
+        if not os.path.exists(self.file_path):
+            self.get_logger().warn(f'Waypoints file not found: {self.file_path}')
             return False
         
         try:
-            with open(file_path, 'r') as f:
+            with open(self.file_path, 'r') as f:
                 self.waypoints_data = yaml.safe_load(f)
             
             if self.waypoints_data and 'waypoints' in self.waypoints_data:
@@ -93,6 +98,32 @@ class VisualizerNode(Node):
 
     def publish_markers(self):
         """Publish waypoint markers and trajectory"""
+        # Hot-reload: Check if waypoints file has been modified
+        file_changed = False
+        try:
+            if os.path.exists(self.file_path):
+                current_mtime = os.path.getmtime(self.file_path)
+                if current_mtime != self.last_mtime:
+                    file_changed = True
+                    self.get_logger().warn(
+                        f'[HOT-RELOAD] Waypoints file changed (old_mtime={self.last_mtime}, new_mtime={current_mtime}) → reloading {self.file_path}'
+                    )
+                    # If we had waypoints before, clear the old markers first
+                    if self.max_markers_ever_published > 0:
+                        self.get_logger().info(
+                            f'[HOT-RELOAD] Clearing {self.max_markers_ever_published} old markers from RViz'
+                        )
+                        self._publish_delete_markers(self.max_markers_ever_published)
+                        time.sleep(0.05)
+                    
+                    # Reload waypoints from file
+                    self.load_waypoints()
+                    # Update last_mtime AFTER successful reload
+                    self.last_mtime = current_mtime
+        except (OSError, FileNotFoundError) as e:
+            self.get_logger().debug(f'Could not check waypoints file: {e}')
+            pass  # File temporarily inaccessible, continue with current data
+        
         if not self.waypoints_data or 'waypoints' not in self.waypoints_data:
             return
         
@@ -120,9 +151,9 @@ class VisualizerNode(Node):
             marker.scale.z = 0.1
             
             # Color gradient based on waypoint order
-            progress = i / len(waypoints) if len(waypoints) > 1 else 0
-            marker.color.r = progress
-            marker.color.g = 1.0 - progress
+            progress = float(i / len(waypoints)) if len(waypoints) > 1 else 0.0
+            marker.color.r = float(progress)
+            marker.color.g = float(1.0 - progress)
             marker.color.b = 0.5
             marker.color.a = 0.8
             
@@ -174,6 +205,37 @@ class VisualizerNode(Node):
         
         # Publish trajectory
         self.trajectory_pub.publish(trajectory_marker)
+        
+        # Update tracking: Keep max to ensure complete cleanup on hot-reload
+        current_num_markers = len(waypoints)
+        if current_num_markers > self.max_markers_ever_published:
+            self.max_markers_ever_published = current_num_markers
+        self.last_num_waypoints = current_num_markers
+
+    def _publish_delete_markers(self, num_markers: int):
+        """Publish DELETE action for all markers (both waypoints and text labels)"""
+        delete_array = MarkerArray()
+        
+        # Delete individual waypoint markers (IDs 0 to num_markers-1)
+        for i in range(num_markers):
+            marker = Marker()
+            marker.header.frame_id = 'odom'
+            marker.header.stamp = self.get_clock().now().to_msg()
+            marker.id = i
+            marker.action = Marker.DELETE
+            delete_array.markers.append(marker)
+        
+        # Delete text label markers (IDs 1000 to 1000+num_markers-1)
+        for i in range(num_markers):
+            marker = Marker()
+            marker.header.frame_id = 'odom'
+            marker.header.stamp = self.get_clock().now().to_msg()
+            marker.id = 1000 + i
+            marker.action = Marker.DELETE
+            delete_array.markers.append(marker)
+        
+        # Delete trajectory marker (ID 0 - but use different namespace or just rewrite it)
+        self.marker_array_pub.publish(delete_array)
 
 
 def main(args=None):

@@ -1,0 +1,2 @@
+Invoking command in '/home/ferradar/ros2_ws/build/autonomous_patrol': /usr/bin/cmake --build /home/ferradar/ros2_ws/build/autonomous_patrol -- -j6 -l6
+Invoked command in '/home/ferradar/ros2_ws/build/autonomous_patrol' returned '2': /usr/bin/cmake --build /home/ferradar/ros2_ws/build/autonomous_patrol -- -j6 -l6

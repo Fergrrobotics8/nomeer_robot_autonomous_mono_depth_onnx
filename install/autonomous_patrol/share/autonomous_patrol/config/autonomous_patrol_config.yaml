@@ -1,23 +1,24 @@
-/**:
+follow_waypoints:
   ros__parameters:
-    recorder:
-      sampling_mode: "distance"
-      min_distance_between_waypoints: 0.1
-      sampling_frequency: 5.0
-      output_file: "waypoints.yaml"
-      data_directory: "data"
+    waypoints_file: "waypoints.yaml"
+    data_directory: "data"
+    results_directory: "results"
+    waypoint_tolerance: 0.05           # Precisión: ±5cm (sin compromisos)
+    max_linear_velocity: 0.3           # Velocidad controlada para precisión
+    max_angular_velocity: 0.8          # Velocidad angular controlada
+    control_frequency: 20.0            # 20 Hz = 50ms loop
+    use_yaw_control: true
 
-    follower:
-      waypoints_file: "waypoints.yaml"
-      data_directory: "data"
-      results_directory: "results"
-      waypoint_tolerance: 0.05
-      max_linear_velocity: 0.8
-      max_angular_velocity: 1.5
-      control_frequency: 10.0
-      use_yaw_control: true
+waypoint_visualizer:
+  ros__parameters:
+    waypoints_file: "waypoints.yaml"
+    data_directory: "data"
+    publish_frequency: 1.0
 
-    visualizer:
-      waypoints_file: "waypoints.yaml"
-      data_directory: "data"
-      publish_frequency: 1.0
+record_waypoints:
+  ros__parameters:
+    sampling_mode: "distance"
+    min_distance_between_waypoints: 0.1
+    sampling_frequency: 5.0
+    output_file: "waypoints.yaml"
+    data_directory: "data"

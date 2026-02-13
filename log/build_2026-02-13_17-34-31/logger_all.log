@@ -1,0 +1,245 @@
+[0.337s] colcon DEBUG Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'robot_description']
+[0.337s] colcon DEBUG Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=6, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['robot_description'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f6013afe410>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f6013afdf00>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f6013afdf00>>)
+[0.867s] colcon.colcon_core.package_discovery Level 1 discover_packages(colcon_meta) check parameters
+[0.867s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) check parameters
+[0.867s] colcon.colcon_core.package_discovery Level 1 discover_packages(ignore) check parameters
+[0.867s] colcon.colcon_core.package_discovery Level 1 discover_packages(path) check parameters
+[0.868s] colcon.colcon_core.package_discovery Level 1 discover_packages(colcon_meta) discover
+[0.868s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) discover
+[0.868s] colcon.colcon_core.package_discovery INFO Crawling recursively for packages in '/home/ferradar/ros2_ws'
+[0.868s] colcon.colcon_core.package_identification Level 1 _identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.869s] colcon.colcon_core.package_identification Level 1 _identify(.) by extension 'ignore'
+[0.869s] colcon.colcon_core.package_identification Level 1 _identify(.) by extension 'ignore_ament_install'
+[0.869s] colcon.colcon_core.package_identification Level 1 _identify(.) by extensions ['colcon_pkg']
+[0.869s] colcon.colcon_core.package_identification Level 1 _identify(.) by extension 'colcon_pkg'
+[0.869s] colcon.colcon_core.package_identification Level 1 _identify(.) by extensions ['colcon_meta']
+[0.869s] colcon.colcon_core.package_identification Level 1 _identify(.) by extension 'colcon_meta'
+[0.869s] colcon.colcon_core.package_identification Level 1 _identify(.) by extensions ['ros']
+[0.869s] colcon.colcon_core.package_identification Level 1 _identify(.) by extension 'ros'
+[0.885s] colcon.colcon_core.package_identification Level 1 _identify(.) by extensions ['cmake', 'python']
+[0.887s] colcon.colcon_core.package_identification Level 1 _identify(.) by extension 'cmake'
+[0.887s] colcon.colcon_core.package_identification Level 1 _identify(.) by extension 'python'
+[0.887s] colcon.colcon_core.package_identification Level 1 _identify(.) by extensions ['python_setup_py']
+[0.888s] colcon.colcon_core.package_identification Level 1 _identify(.) by extension 'python_setup_py'
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(build) by extension 'ignore'
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(build) ignored
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extensions ['ignore', 'ignore_ament_install']
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extension 'ignore'
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extension 'ignore_ament_install'
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extensions ['colcon_pkg']
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extension 'colcon_pkg'
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extensions ['colcon_meta']
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extension 'colcon_meta'
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extensions ['ros']
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extension 'ros'
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extensions ['cmake', 'python']
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extension 'cmake'
+[0.889s] colcon.colcon_core.package_identification Level 1 _identify(data) by extension 'python'
+[0.890s] colcon.colcon_core.package_identification Level 1 _identify(data) by extensions ['python_setup_py']
+[0.890s] colcon.colcon_core.package_identification Level 1 _identify(data) by extension 'python_setup_py'
+[0.891s] colcon.colcon_core.package_identification Level 1 _identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.891s] colcon.colcon_core.package_identification Level 1 _identify(install) by extension 'ignore'
+[0.891s] colcon.colcon_core.package_identification Level 1 _identify(install) ignored
+[0.891s] colcon.colcon_core.package_identification Level 1 _identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.891s] colcon.colcon_core.package_identification Level 1 _identify(log) by extension 'ignore'
+[0.891s] colcon.colcon_core.package_identification Level 1 _identify(log) ignored
+[0.893s] colcon.colcon_core.package_identification Level 1 _identify(results) by extensions ['ignore', 'ignore_ament_install']
+[0.893s] colcon.colcon_core.package_identification Level 1 _identify(results) by extension 'ignore'
+[0.894s] colcon.colcon_core.package_identification Level 1 _identify(results) by extension 'ignore_ament_install'
+[0.894s] colcon.colcon_core.package_identification Level 1 _identify(results) by extensions ['colcon_pkg']
+[0.894s] colcon.colcon_core.package_identification Level 1 _identify(results) by extension 'colcon_pkg'
+[0.894s] colcon.colcon_core.package_identification Level 1 _identify(results) by extensions ['colcon_meta']
+[0.894s] colcon.colcon_core.package_identification Level 1 _identify(results) by extension 'colcon_meta'
+[0.897s] colcon.colcon_core.package_identification Level 1 _identify(results) by extensions ['ros']
+[0.897s] colcon.colcon_core.package_identification Level 1 _identify(results) by extension 'ros'
+[0.897s] colcon.colcon_core.package_identification Level 1 _identify(results) by extensions ['cmake', 'python']
+[0.897s] colcon.colcon_core.package_identification Level 1 _identify(results) by extension 'cmake'
+[0.897s] colcon.colcon_core.package_identification Level 1 _identify(results) by extension 'python'
+[0.897s] colcon.colcon_core.package_identification Level 1 _identify(results) by extensions ['python_setup_py']
+[0.897s] colcon.colcon_core.package_identification Level 1 _identify(results) by extension 'python_setup_py'
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extension 'ignore'
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extension 'ignore_ament_install'
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extensions ['colcon_pkg']
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extension 'colcon_pkg'
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extensions ['colcon_meta']
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extension 'colcon_meta'
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extensions ['ros']
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extension 'ros'
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extensions ['cmake', 'python']
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extension 'cmake'
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extension 'python'
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extensions ['python_setup_py']
+[0.898s] colcon.colcon_core.package_identification Level 1 _identify(src) by extension 'python_setup_py'
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extension 'ignore'
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extension 'ignore_ament_install'
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extensions ['colcon_pkg']
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extension 'colcon_pkg'
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extensions ['colcon_meta']
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extension 'colcon_meta'
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extensions ['ros']
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extension 'ros'
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extensions ['cmake', 'python']
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extension 'cmake'
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extension 'python'
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extensions ['python_setup_py']
+[0.899s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2) by extension 'python_setup_py'
+[0.902s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extensions ['ignore', 'ignore_ament_install']
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extension 'ignore'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extension 'ignore_ament_install'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extensions ['colcon_pkg']
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extension 'colcon_pkg'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extensions ['colcon_meta']
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extension 'colcon_meta'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extensions ['ros']
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extension 'ros'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extensions ['cmake', 'python']
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extension 'cmake'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extension 'python'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extensions ['python_setup_py']
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/Docs) by extension 'python_setup_py'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extensions ['ignore', 'ignore_ament_install']
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extension 'ignore'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extension 'ignore_ament_install'
+[0.903s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extensions ['colcon_pkg']
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extension 'colcon_pkg'
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extensions ['colcon_meta']
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extension 'colcon_meta'
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extensions ['ros']
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extension 'ros'
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extensions ['cmake', 'python']
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extension 'cmake'
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extension 'python'
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extensions ['python_setup_py']
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src) by extension 'python_setup_py'
+[0.904s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extensions ['ignore', 'ignore_ament_install']
+[0.905s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extension 'ignore'
+[0.905s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extension 'ignore_ament_install'
+[0.905s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extensions ['colcon_pkg']
+[0.905s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extension 'colcon_pkg'
+[0.905s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extensions ['colcon_meta']
+[0.905s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extension 'colcon_meta'
+[0.905s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extensions ['ros']
+[0.905s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/autonomous_patrol) by extension 'ros'
+[0.910s] colcon.colcon_core.package_identification DEBUG Package 'src/nomeer_robot_ros2/src/autonomous_patrol' with type 'ros.ament_cmake' and name 'autonomous_patrol'
+[0.910s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extensions ['ignore', 'ignore_ament_install']
+[0.910s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extension 'ignore'
+[0.910s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extension 'ignore_ament_install'
+[0.910s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extensions ['colcon_pkg']
+[0.910s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extension 'colcon_pkg'
+[0.910s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extensions ['colcon_meta']
+[0.910s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extension 'colcon_meta'
+[0.910s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extensions ['ros']
+[0.911s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/mono_depth_onnx) by extension 'ros'
+[0.913s] colcon.colcon_core.package_identification DEBUG Package 'src/nomeer_robot_ros2/src/mono_depth_onnx' with type 'ros.ament_cmake' and name 'mono_depth_onnx'
+[0.913s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extensions ['ignore', 'ignore_ament_install']
+[0.913s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extension 'ignore'
+[0.913s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extension 'ignore_ament_install'
+[0.913s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extensions ['colcon_pkg']
+[0.913s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extension 'colcon_pkg'
+[0.913s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extensions ['colcon_meta']
+[0.913s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extension 'colcon_meta'
+[0.913s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extensions ['ros']
+[0.914s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/robot_description) by extension 'ros'
+[0.915s] colcon.colcon_core.package_identification DEBUG Package 'src/nomeer_robot_ros2/src/robot_description' with type 'ros.ament_cmake' and name 'robot_description'
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extensions ['ignore', 'ignore_ament_install']
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extension 'ignore'
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extension 'ignore_ament_install'
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extensions ['colcon_pkg']
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extension 'colcon_pkg'
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extensions ['colcon_meta']
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extension 'colcon_meta'
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extensions ['ros']
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extension 'ros'
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extensions ['cmake', 'python']
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extension 'cmake'
+[0.915s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extension 'python'
+[0.916s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extensions ['python_setup_py']
+[0.916s] colcon.colcon_core.package_identification Level 1 _identify(src/nomeer_robot_ros2/src/teleop_twist_keyboard) by extension 'python_setup_py'
+[0.916s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) using defaults
+[0.916s] colcon.colcon_core.package_discovery Level 1 discover_packages(ignore) discover
+[0.916s] colcon.colcon_core.package_discovery Level 1 discover_packages(ignore) using defaults
+[0.916s] colcon.colcon_core.package_discovery Level 1 discover_packages(path) discover
+[0.916s] colcon.colcon_core.package_discovery Level 1 discover_packages(path) using defaults
+[0.960s] colcon.colcon_core.package_selection INFO Skipping not selected package 'autonomous_patrol' in 'src/nomeer_robot_ros2/src/autonomous_patrol'
+[0.960s] colcon.colcon_core.package_selection INFO Skipping not selected package 'mono_depth_onnx' in 'src/nomeer_robot_ros2/src/mono_depth_onnx'
+[0.961s] colcon.colcon_core.package_discovery Level 1 discover_packages(prefix_path) check parameters
+[0.961s] colcon.colcon_core.package_discovery Level 1 discover_packages(prefix_path) discover
+[0.965s] colcon.colcon_installed_package_information.package_discovery DEBUG Found 3 installed packages in /home/ferradar/ros2_ws/install
+[0.967s] colcon.colcon_installed_package_information.package_discovery DEBUG Found 289 installed packages in /opt/ros/humble
+[0.969s] colcon.colcon_core.package_discovery Level 1 discover_packages(prefix_path) using defaults
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'cmake_args' from command line to 'None'
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'cmake_target' from command line to 'None'
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'cmake_clean_cache' from command line to 'False'
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'cmake_clean_first' from command line to 'False'
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'cmake_force_configure' from command line to 'False'
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'ament_cmake_args' from command line to 'None'
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'catkin_cmake_args' from command line to 'None'
+[1.063s] colcon.colcon_core.verb Level 5 set package 'robot_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.063s] colcon.colcon_core.verb DEBUG Building package 'robot_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ferradar/ros2_ws/build/robot_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ferradar/ros2_ws/install/robot_description', 'merge_install': False, 'path': '/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/robot_description', 'symlink_install': False, 'test_result_base': None}
+[1.064s] colcon.colcon_core.executor INFO Executing jobs using 'parallel' executor
+[1.073s] colcon.colcon_parallel_executor.executor.parallel DEBUG run_until_complete
+[1.073s] colcon.colcon_ros.task.ament_cmake.build INFO Building ROS package in '/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/robot_description' with build type 'ament_cmake'
+[1.073s] colcon.colcon_cmake.task.cmake.build INFO Building CMake package in '/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/robot_description'
+[1.085s] colcon.colcon_core.plugin_system INFO Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.085s] colcon.colcon_core.shell INFO Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.085s] colcon.colcon_core.shell DEBUG Skip shell extension 'dsv' for command environment
+[1.101s] colcon.colcon_core.event_handler.log_command DEBUG Invoking command in '/home/ferradar/ros2_ws/build/robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ferradar/ros2_ws/build/robot_description -- -j6 -l6
+[1.265s] colcon.colcon_core.event_handler.log_command DEBUG Invoked command in '/home/ferradar/ros2_ws/build/robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ferradar/ros2_ws/build/robot_description -- -j6 -l6
+[1.282s] colcon.colcon_core.event_handler.log_command DEBUG Invoking command in '/home/ferradar/ros2_ws/build/robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ferradar/ros2_ws/build/robot_description
+[1.308s] colcon.colcon_core.environment Level 1 create_environment_scripts_only(robot_description)
+[1.309s] colcon.colcon_core.event_handler.log_command DEBUG Invoked command in '/home/ferradar/ros2_ws/build/robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ferradar/ros2_ws/build/robot_description
+[1.318s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description' for CMake module files
+[1.319s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description' for CMake config files
+[1.319s] colcon.colcon_core.shell Level 1 create_environment_hook('robot_description', 'cmake_prefix_path')
+[1.320s] colcon.colcon_core.shell INFO Creating environment hook '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/hook/cmake_prefix_path.ps1'
+[1.324s] colcon.colcon_core.shell INFO Creating environment descriptor '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/hook/cmake_prefix_path.dsv'
+[1.325s] colcon.colcon_core.shell INFO Creating environment hook '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/hook/cmake_prefix_path.sh'
+[1.326s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description/bin'
+[1.326s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description/lib/pkgconfig/robot_description.pc'
+[1.326s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description/lib/python3.10/site-packages'
+[1.327s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description/bin'
+[1.327s] colcon.colcon_core.shell INFO Creating package script '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.ps1'
+[1.329s] colcon.colcon_core.shell INFO Creating package descriptor '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.dsv'
+[1.330s] colcon.colcon_core.shell INFO Creating package script '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.sh'
+[1.332s] colcon.colcon_core.shell INFO Creating package script '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.bash'
+[1.333s] colcon.colcon_core.shell INFO Creating package script '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.zsh'
+[1.336s] colcon.colcon_core.environment Level 1 create_file_with_runtime_dependencies(/home/ferradar/ros2_ws/install/robot_description/share/colcon-core/packages/robot_description)
+[1.336s] colcon.colcon_core.environment Level 1 create_environment_scripts_only(robot_description)
+[1.337s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description' for CMake module files
+[1.337s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description' for CMake config files
+[1.337s] colcon.colcon_core.shell Level 1 create_environment_hook('robot_description', 'cmake_prefix_path')
+[1.338s] colcon.colcon_core.shell INFO Creating environment hook '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/hook/cmake_prefix_path.ps1'
+[1.338s] colcon.colcon_core.shell INFO Creating environment descriptor '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/hook/cmake_prefix_path.dsv'
+[1.340s] colcon.colcon_core.shell INFO Creating environment hook '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/hook/cmake_prefix_path.sh'
+[1.340s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description/bin'
+[1.341s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description/lib/pkgconfig/robot_description.pc'
+[1.341s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description/lib/python3.10/site-packages'
+[1.341s] colcon.colcon_core.environment Level 1 checking '/home/ferradar/ros2_ws/install/robot_description/bin'
+[1.341s] colcon.colcon_core.shell INFO Creating package script '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.ps1'
+[1.342s] colcon.colcon_core.shell INFO Creating package descriptor '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.dsv'
+[1.343s] colcon.colcon_core.shell INFO Creating package script '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.sh'
+[1.344s] colcon.colcon_core.shell INFO Creating package script '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.bash'
+[1.344s] colcon.colcon_core.shell INFO Creating package script '/home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.zsh'
+[1.344s] colcon.colcon_core.environment Level 1 create_file_with_runtime_dependencies(/home/ferradar/ros2_ws/install/robot_description/share/colcon-core/packages/robot_description)
+[1.345s] colcon.colcon_parallel_executor.executor.parallel DEBUG closing loop
+[1.345s] colcon.colcon_parallel_executor.executor.parallel DEBUG loop closed
+[1.345s] colcon.colcon_parallel_executor.executor.parallel DEBUG run_until_complete finished with '0'
+[1.345s] colcon.colcon_core.event_reactor DEBUG joining thread
+[1.354s] colcon.colcon_core.plugin_system INFO Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.354s] colcon.colcon_core.plugin_system INFO Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.354s] colcon.colcon_notification.desktop_notification INFO Sending desktop notification using 'notify2'
+[1.396s] colcon.colcon_core.event_reactor DEBUG joined thread
+[1.396s] colcon.colcon_core.shell INFO Creating prefix script '/home/ferradar/ros2_ws/install/local_setup.ps1'
+[1.399s] colcon.colcon_core.shell INFO Creating prefix util module '/home/ferradar/ros2_ws/install/_local_setup_util_ps1.py'
+[1.401s] colcon.colcon_core.shell INFO Creating prefix chain script '/home/ferradar/ros2_ws/install/setup.ps1'
+[1.403s] colcon.colcon_core.shell INFO Creating prefix script '/home/ferradar/ros2_ws/install/local_setup.sh'
+[1.404s] colcon.colcon_core.shell INFO Creating prefix util module '/home/ferradar/ros2_ws/install/_local_setup_util_sh.py'
+[1.405s] colcon.colcon_core.shell INFO Creating prefix chain script '/home/ferradar/ros2_ws/install/setup.sh'
+[1.406s] colcon.colcon_core.shell INFO Creating prefix script '/home/ferradar/ros2_ws/install/local_setup.bash'
+[1.407s] colcon.colcon_core.shell INFO Creating prefix chain script '/home/ferradar/ros2_ws/install/setup.bash'
+[1.408s] colcon.colcon_core.shell INFO Creating prefix script '/home/ferradar/ros2_ws/install/local_setup.zsh'
+[1.409s] colcon.colcon_core.shell INFO Creating prefix chain script '/home/ferradar/ros2_ws/install/setup.zsh'

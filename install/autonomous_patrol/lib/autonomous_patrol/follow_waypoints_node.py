@@ -99,6 +99,28 @@ class FollowWaypointsNode(Node):
         self.times_per_waypoint: List[float] = []
         self.last_waypoint_time = None
         
+        # PID controller state for linear velocity
+        self.linear_last_error = 0.0
+        self.linear_integral_error = 0.0
+        self.last_control_time = time.time()
+        
+        # PID controller state for angular velocity
+        self.angular_last_error = 0.0
+        self.angular_integral_error = 0.0
+        
+        # PID tuning parameters - optimized for precision waypoint following
+        # LINEAL: controla convergencia a la distancia exacta
+        self.linear_kp = 1.8    # Proportional: respuesta rápida al error
+        self.linear_ki = 0.3    # Integral: elimina errores sostenidos (ej: stuck en 0.19m)
+        self.linear_kd = 0.6    # Derivative: amortigua y previene overshooting
+        self.linear_i_max = 0.4 # Anti-windup limit
+        
+        # ANGULAR: controla orientación hacia el waypoint
+        self.angular_kp = 2.0   # Más responsivo
+        self.angular_ki = 0.15  # Persiste para alineación perfecta
+        self.angular_kd = 0.5   # Suaviza rotación
+        self.angular_i_max = 0.6 # Anti-windup limit
+        
         # Load waypoints
         if not self.load_waypoints():
             self.get_logger().error('Failed to load waypoints. Node will not execute.')
@@ -127,9 +149,13 @@ class FollowWaypointsNode(Node):
         self.get_logger().info(
             f'Follow Waypoints Node initialized\n'
             f'  Waypoints loaded: {len(self.waypoints)}\n'
-            f'  Waypoint tolerance: {self.waypoint_tolerance}m\n'
-            f'  Max linear velocity: {self.max_linear_vel}m/s\n'
-            f'  Max angular velocity: {self.max_angular_vel}rad/s'
+            f'  Waypoint tolerance: {self.waypoint_tolerance}m (TARGET: 0.05m)\n'
+            f'  Max linear velocity: {self.max_linear_vel}m/s (TARGET: 0.3m/s)\n'
+            f'  Max angular velocity: {self.max_angular_vel}rad/s (TARGET: 0.8rad/s)\n'
+            f'  Control frequency: {self.control_freq}Hz (TARGET: 20Hz)\n'
+            f'  Use yaw control: {self.use_yaw_control}\n'
+            f'  PID Gains - Linear: Kp={self.linear_kp}, Ki={self.linear_ki}, Kd={self.linear_kd}\n'
+            f'  PID Gains - Angular: Kp={self.angular_kp}, Ki={self.angular_ki}, Kd={self.angular_kd}'
         )
 
     def load_waypoints(self) -> bool:
@@ -190,6 +216,14 @@ class FollowWaypointsNode(Node):
             (target_wp.y - self.current_pose['y'])**2
         )
         
+        # DEBUG: Print poses every 10 iterations to avoid spam
+        if int(self.current_pose['x'] * 1000) % 100 == 0:  # Pseudo-random
+            self.get_logger().warn(
+                f'[DEBUG] Target WP {target_wp.id}: ({target_wp.x:.4f}, {target_wp.y:.4f}) | '
+                f'Current Pose: ({self.current_pose["x"]:.4f}, {self.current_pose["y"]:.4f}) | '
+                f'Calculated Distance: {distance:.4f}m'
+            )
+        
         # Check if waypoint reached
         if distance <= self.waypoint_tolerance:
             self._handle_waypoint_reached(target_wp, distance)
@@ -207,6 +241,12 @@ class FollowWaypointsNode(Node):
         cmd_vel = self._calculate_velocity_command(target_wp, distance)
         self.cmd_vel_pub.publish(cmd_vel)
         
+        # Log velocity command for verification
+        #self.get_logger().info(
+        #    f'PUBLISHING /cmd_vel → Linear: {cmd_vel.linear.x:.4f} m/s | '
+        #    f'Angular: {cmd_vel.angular.z:.4f} rad/s | Distance: {distance:.4f}m'
+        #)
+        
         # Publish current waypoint index
         msg = Int32()
         msg.data = self.current_waypoint_idx
@@ -222,6 +262,13 @@ class FollowWaypointsNode(Node):
         
         self.errors_per_waypoint.append(error)
         self.times_per_waypoint.append(elapsed)
+        
+        self.get_logger().warn(
+            f'WAYPOINT REACHED: ID={target_wp.id} at ({target_wp.x:.4f}, {target_wp.y:.4f}) | '
+            f'Robot at ({self.current_pose["x"]:.4f}, {self.current_pose["y"]:.4f}) | '
+            f'Error: {error:.4f}m (tolerance: {self.waypoint_tolerance}m) | '
+            f'Time: {elapsed:.2f}s | Total: {self.waypoints_reached}/{len(self.waypoints)}'
+        )
         
         self.get_logger().info(
             f'Waypoint {target_wp.id} reached!\n'
@@ -248,8 +295,38 @@ class FollowWaypointsNode(Node):
         self._generate_metrics()
 
     def _calculate_velocity_command(self, target_wp: Waypoint, distance: float) -> Twist:
-        """Calculate velocity command using proportional control law"""
+        """Calculate velocity command using PID control (proportional + integral + derivative)"""
         cmd = Twist()
+        
+        # Calculate time step for PID
+        current_time = time.time()
+        dt = current_time - self.last_control_time
+        self.last_control_time = current_time
+        
+        if dt <= 0:
+            dt = 0.01  # Default 10ms step
+        
+        # ===== LINEAR VELOCITY CONTROL (Distance-based PID) =====
+        # Error: distance to target
+        linear_error = distance
+        
+        # Proportional term
+        linear_p = self.linear_kp * linear_error
+        
+        # Integral term (accumulate error over time)
+        self.linear_integral_error += linear_error * dt
+        # Anti-windup: limit integral to prevent saturation
+        self.linear_integral_error = max(-self.linear_i_max, 
+                                         min(self.linear_i_max, 
+                                             self.linear_integral_error))
+        linear_i = self.linear_ki * self.linear_integral_error
+        
+        # Derivative term (rate of change of error)
+        linear_d = 0.0
+        if dt > 0:
+            linear_d = self.linear_kd * (linear_error - self.linear_last_error) / dt
+        
+        self.linear_last_error = linear_error
         
         # Calculate desired heading to target
         dx = target_wp.x - self.current_pose['x']
@@ -260,21 +337,57 @@ class FollowWaypointsNode(Node):
         yaw_error = self._normalize_angle(desired_yaw - self.current_pose['yaw'])
         yaw_error_mag = abs(yaw_error)
         
-        # Angular velocity - stronger control
-        # Rotate fast to align with target
-        cmd.angular.z = min(self.max_angular_vel, max(-self.max_angular_vel, yaw_error * 1.0))
+        # ===== ANGULAR VELOCITY CONTROL (Yaw error-based PID) =====
+        angular_error = yaw_error
         
-        # Linear velocity - reduced if not aligned (better path following)
-        # Only move forward when reasonably aligned (< 30 degrees)
-        if yaw_error_mag < 0.52:  # ~30 degrees in radians
-            if distance > 0.01:
-                # Stronger proportional control for forward motion
-                cmd.linear.x = min(self.max_linear_vel, distance * 1.0)
+        # Proportional term
+        angular_p = self.angular_kp * angular_error
+        
+        # Integral term
+        self.angular_integral_error += angular_error * dt
+        self.angular_integral_error = max(-self.angular_i_max,
+                                          min(self.angular_i_max,
+                                              self.angular_integral_error))
+        angular_i = self.angular_ki * self.angular_integral_error
+        
+        # Derivative term
+        angular_d = 0.0
+        if dt > 0:
+            angular_d = self.angular_kd * (angular_error - self.angular_last_error) / dt
+        
+        self.angular_last_error = angular_error
+        
+        # Combine PID terms
+        cmd.angular.z = angular_p + angular_i + angular_d
+        cmd.angular.z = min(self.max_angular_vel, max(-self.max_angular_vel, cmd.angular.z))
+        
+        # Linear velocity control: be aggressive from far away, precise when close
+        # Only move forward when reasonably aligned (< 60 degrees for some motion, < 30 for full speed)
+        if yaw_error_mag < 1.047:  # ~60 degrees: allow forward motion with rotation
+            # Use PID to calculate velocity, with adaptive scaling based on distance
+            pid_linear = linear_p + linear_i + linear_d
+            
+            if distance > 0.2:
+                # Far away: go at reasonable speed
+                cmd.linear.x = min(self.max_linear_vel, max(0.01, pid_linear))
+            elif distance > 0.1:
+                # Medium distance: controlled approach
+                cmd.linear.x = min(0.2, max(0.01, pid_linear * 0.8))
             else:
-                cmd.linear.x = 0.0
+                # Very close: ultra-precise control
+                cmd.linear.x = min(0.1, max(0.01, pid_linear * 0.5))
         else:
-            # Rotate in place until aligned
+            # Not aligned: rotate in place
             cmd.linear.x = 0.0
+        
+        # Always clamp to valid range
+        cmd.linear.x = max(0.0, cmd.linear.x)
+        
+        # Info logging: publish command values (no es necesario)
+        #self.get_logger().info(
+        #    f'[PID] Distance: {distance:.4f}m | Linear: {cmd.linear.x:.3f} m/s | '
+        #    f'Yaw: {math.degrees(yaw_error):.1f}° | Angular: {cmd.angular.z:.3f} rad/s'
+        #)
         
         return cmd
 
