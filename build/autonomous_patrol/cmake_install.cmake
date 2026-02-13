@@ -71,8 +71,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/record_waypoints_node.py"
     "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/follow_waypoints_node.py"
     "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/visualizer_node.py"
-    "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/gazebo_odometry_corrector.py"
-    "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/odom_verifier.py"
     )
 endif()
 
