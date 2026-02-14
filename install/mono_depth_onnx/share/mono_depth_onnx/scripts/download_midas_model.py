@@ -12,7 +12,7 @@ Available models:
 - "midas_v3_small": Smallest model, fastest inference (~30ms on GPU)
 - "dpt_hybrid": Medium model, better accuracy
 - "dpt_large": Largest model, best accuracy but slowest
-""
+"""
 
 import os
 import sys
