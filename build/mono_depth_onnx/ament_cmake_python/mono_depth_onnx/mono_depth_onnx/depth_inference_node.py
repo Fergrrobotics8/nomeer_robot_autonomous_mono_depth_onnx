@@ -8,6 +8,7 @@ Depth values are in relative units (normalized 0-1).
 """
 
 import os
+import sys
 import numpy as np
 from typing import Optional, Tuple
 import time
@@ -17,6 +18,11 @@ from rclpy.node import Node
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
+
+try:
+    from ament_index_python.packages import get_package_share_directory
+except ImportError:
+    get_package_share_directory = None
 
 try:
     import onnxruntime as ort
@@ -31,18 +37,21 @@ class DepthInferenceNode(Node):
         super().__init__('depth_inference')
         
         # Declare parameters
-        self.declare_parameter('model_path', 'models/midas_v3_small.onnx')
-        self.declare_parameter('model_name', 'midas_v3_small')
+        self.declare_parameter('model_path', 'midas_v21_small.onnx')
+        self.declare_parameter('model_name', 'midas_v21_small')
         self.declare_parameter('input_height', 256)
         self.declare_parameter('input_width', 256)
         self.declare_parameter('enable_gpu', False)
         
         # Get parameters
-        self.model_path = self.get_parameter('model_path').value
+        model_path_param = self.get_parameter('model_path').value
         self.model_name = self.get_parameter('model_name').value
         self.input_height = self.get_parameter('input_height').value
         self.input_width = self.get_parameter('input_width').value
         self.enable_gpu = self.get_parameter('enable_gpu').value
+        
+        # Resolve model path
+        self.model_path = self._resolve_model_path(model_path_param)
         
         # CV Bridge
         self.bridge = CvBridge()
@@ -59,7 +68,7 @@ class DepthInferenceNode(Node):
         # Subscribers
         self.image_sub = self.create_subscription(
             Image,
-            '/camera/image_raw',
+            '/rgb_image',
             self.image_callback,
             10
         )
@@ -79,6 +88,59 @@ class DepthInferenceNode(Node):
             f'  Input size: {self.input_width}x{self.input_height}\n'
             f'  GPU enabled: {self.enable_gpu}'
         )
+
+    def _resolve_model_path(self, model_filename: str) -> str:
+        """
+        Resolve the full path to the model file.
+        
+        Tries multiple locations:
+        1. Use ament_index to find package path (when running via ros2 run)
+        2. Relative path from current directory
+        3. Relative path assuming src/ directory structure
+        """
+        
+        # Try 1: Using ament_index_python (best option for deployed nodes)
+        if get_package_share_directory:
+            try:
+                pkg_share = get_package_share_directory('mono_depth_onnx')
+                model_path = os.path.join(pkg_share, 'models', model_filename)
+                if os.path.exists(model_path):
+                    self.get_logger().info(f'Using model from package share: {model_path}')
+                    return model_path
+            except Exception as e:
+                self.get_logger().debug(f'Could not resolve via ament_index: {e}')
+        
+        # Try 2: models/ subdirectory in current working directory
+        relative_path = os.path.join('models', model_filename)
+        if os.path.exists(relative_path):
+            abs_path = os.path.abspath(relative_path)
+            self.get_logger().info(f'Using model from relative path: {abs_path}')
+            return abs_path
+        
+        # Try 3: Navigate to src structure if in development
+        cwd = os.getcwd()
+        possible_paths = [
+            os.path.join(cwd, 'models', model_filename),
+            os.path.join(cwd, '..', 'mono_depth_onnx', 'models', model_filename),
+            os.path.join(cwd, 'src', 'nomeer_robot_ros2', 'src', 'mono_depth_onnx', 'models', model_filename),
+        ]
+        
+        for path in possible_paths:
+            abs_path = os.path.abspath(path)
+            if os.path.exists(abs_path):
+                self.get_logger().info(f'Using model from path search: {abs_path}')
+                return abs_path
+        
+        # If nothing found, return the package share path (will fail with informative error)
+        if get_package_share_directory:
+            try:
+                pkg_share = get_package_share_directory('mono_depth_onnx')
+                return os.path.join(pkg_share, 'models', model_filename)
+            except:
+                pass
+        
+        # Fallback
+        return os.path.join('models', model_filename)
 
     def _initialize_model(self) -> bool:
         """Initialize ONNX Runtime session."""

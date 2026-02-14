@@ -1,0 +1,70 @@
+[0.014s] Invoking command in '/home/ferradar/ros2_ws/build/mono_depth_onnx': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ferradar/ros2_ws/build/mono_depth_onnx -- -j6 -l6
+[0.129s] Built target ament_cmake_python_copy_mono_depth_onnx
+[0.591s] running egg_info
+[0.593s] writing mono_depth_onnx.egg-info/PKG-INFO
+[0.594s] writing dependency_links to mono_depth_onnx.egg-info/dependency_links.txt
+[0.596s] writing top-level names to mono_depth_onnx.egg-info/top_level.txt
+[0.600s] reading manifest file 'mono_depth_onnx.egg-info/SOURCES.txt'
+[0.606s] writing manifest file 'mono_depth_onnx.egg-info/SOURCES.txt'
+[0.648s] Built target ament_cmake_python_build_mono_depth_onnx_egg
+[0.662s] Invoked command in '/home/ferradar/ros2_ws/build/mono_depth_onnx' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ferradar/ros2_ws/build/mono_depth_onnx -- -j6 -l6
+[0.676s] Invoking command in '/home/ferradar/ros2_ws/build/mono_depth_onnx': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ferradar/ros2_ws/build/mono_depth_onnx
+[0.688s] -- Install configuration: ""
+[0.688s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/environment/pythonpath.sh
+[0.693s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/environment/pythonpath.dsv
+[0.693s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx-1.0.0-py3.10.egg-info
+[0.693s] -- Installing: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx-1.0.0-py3.10.egg-info/top_level.txt
+[0.694s] -- Installing: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx-1.0.0-py3.10.egg-info/SOURCES.txt
+[0.694s] -- Installing: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx-1.0.0-py3.10.egg-info/PKG-INFO
+[0.694s] -- Installing: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx-1.0.0-py3.10.egg-info/dependency_links.txt
+[0.694s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx
+[0.694s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx/depth_metric_node.py
+[0.694s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx/image_source_node.py
+[0.694s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx/__init__.py
+[0.694s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx/depth_visualizer_node.py
+[0.694s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx/autonomous_depth_safety_node.py
+[0.694s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx/depth_inference_node.py
+[0.780s] Listing '/home/ferradar/ros2_ws/install/mono_depth_onnx/local/lib/python3.10/dist-packages/mono_depth_onnx'...
+[0.785s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/lib/mono_depth_onnx/image_source_node.py
+[0.786s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/lib/mono_depth_onnx/depth_inference_node.py
+[0.786s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/lib/mono_depth_onnx/depth_metric_node.py
+[0.787s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/lib/mono_depth_onnx/depth_visualizer_node.py
+[0.787s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/lib/mono_depth_onnx/autonomous_depth_safety_node.py
+[0.787s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/launch
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/launch/inference.launch.py
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/launch/full_pipeline.launch.py
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/launch/with_autonomy.launch.py
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/config
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/config/mono_depth_config.yaml
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/config/test_config.yaml
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/models
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/models/midas_v21_small.pt
+[0.788s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/models/midas_v21_small.onnx.data
+[0.789s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/models/midas_v21_small.onnx
+[0.789s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/data
+[0.789s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/data/images
+[0.789s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/data/images/test_image_005.jpg
+[0.789s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/data/images/test_image_001.jpg
+[0.790s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/data/images/test_image_003.jpg
+[0.790s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/data/images/test_image_004.jpg
+[0.790s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/data/images/test_image_002.jpg
+[0.790s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/assets
+[0.790s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/scripts
+[0.791s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/scripts/download_midas_model.py
+[0.791s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/scripts/generate_test_images.py
+[0.791s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/ament_index/resource_index/package_run_dependencies/mono_depth_onnx
+[0.791s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/ament_index/resource_index/parent_prefix_path/mono_depth_onnx
+[0.791s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/environment/ament_prefix_path.sh
+[0.791s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/environment/ament_prefix_path.dsv
+[0.791s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/environment/path.sh
+[0.791s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/environment/path.dsv
+[0.792s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/local_setup.bash
+[0.792s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/local_setup.sh
+[0.792s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/local_setup.zsh
+[0.792s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/local_setup.dsv
+[0.793s] -- Installing: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/package.dsv
+[0.793s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/ament_index/resource_index/packages/mono_depth_onnx
+[0.793s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/cmake/mono_depth_onnxConfig.cmake
+[0.793s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/cmake/mono_depth_onnxConfig-version.cmake
+[0.794s] -- Up-to-date: /home/ferradar/ros2_ws/install/mono_depth_onnx/share/mono_depth_onnx/package.xml
+[0.805s] Invoked command in '/home/ferradar/ros2_ws/build/mono_depth_onnx' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ferradar/ros2_ws/build/mono_depth_onnx

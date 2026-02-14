@@ -38,22 +38,20 @@ class MiDaSDownloader:
     
     # Model URLs from official MiDaS repository
     MODELS = {
-        "midas_v3_small": {
-            "url": "https://github.com/isl-org/MiDaS/releases/download/v3_1/midas_v31_small_256.pt",
+        "midas_v21_small": {
+            "url": "https://github.com/isl-org/MiDaS/releases/download/v2_1/model-small.pt",
             "input_size": (256, 256),
-            "type": "small"
-        },
-        "dpt_hybrid": {
-            "url": "https://github.com/isl-org/MiDaS/releases/download/v3/dpt_hybrid-midas-501f0c75.pt",
-            "input_size": (384, 384),
-            "type": "hybrid"
-        },
-        "dpt_large": {
-            "url": "https://github.com/isl-org/MiDaS/releases/download/v3/dpt_large-midas-2f21e75d.pt",
-            "input_size": (384, 384),
-            "type": "large"
+            "type": "v21_small"
         }
     }
+
+    @staticmethod
+    def _load_midas_v21_small(model_path: str, device):
+        """Load MiDaS v2.1 Small model."""
+        import torch
+        model = torch.hub.load("intel-isl/MiDaS", "MiDaS_small")
+        model.to(device)
+        return model
     
     def __init__(self, model_dir: str = "models"):
         self.model_dir = Path(model_dir)
@@ -101,22 +99,18 @@ class MiDaSDownloader:
         print(f"   Output model: {output_path}")
         
         try:
+            import torch
             # Load model
             print("  Loading PyTorch model...")
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             print(f"  Using device: {device}")
             
             # Import MiDaS model loader
-            import torch
             from torchvision import transforms
             
             # Load model based on type
-            if model_info["type"] == "small":
-                model = self._load_midas_small(pt_path, device)
-            elif model_info["type"] == "hybrid":
-                model = self._load_midas_hybrid(pt_path, device)
-            elif model_info["type"] == "large":
-                model = self._load_midas_large(pt_path, device)
+            if model_info["type"] == "v21_small":
+                model = self._load_midas_v21_small(pt_path, device)
             
             model.eval()
             
@@ -194,8 +188,8 @@ def main():
     parser.add_argument(
         '--model',
         type=str,
-        default='midas_v3_small',
-        choices=['midas_v3_small', 'dpt_hybrid', 'dpt_large'],
+        default='midas_v21_small',
+        choices=['midas_v21_small'],
         help='Model to download and convert'
     )
     parser.add_argument(

@@ -11,8 +11,8 @@
 
     # Depth Estimator Configuration
     depth_estimator:
-      model_name: "midas_v3_small"  # Options: midas_v3_small, dpt_hybrid, dpt_large
-      model_path: "models/midas_v3_small.onnx"
+      model_name: "midas_v21_small"  # Options: midas_v21_small
+      model_path: "models/midas_v21_small.onnx"
       input_height: 256
       input_width: 256
       enable_gpu: false  # Set to true if CUDA available
