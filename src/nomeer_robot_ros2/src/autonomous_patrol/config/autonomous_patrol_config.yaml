@@ -1,0 +1,30 @@
+follow_waypoints:
+  ros__parameters:
+    waypoints_file: "waypoints.yaml"
+    data_directory: "data"
+    results_directory: "results"
+    waypoint_tolerance: 0.1             # Tolerancia de paso: el robot fluye a través de los waypoints
+    max_linear_velocity: 0.5           # Velocidad cómoda de crucero
+    max_angular_velocity: 1.0          # Permite giros ágiles
+    control_frequency: 20.0            # 20 Hz = 50ms loop
+    use_yaw_control: true
+    use_slam: true                     # Usar SLAM para coordenadas absolutas (map frame)
+    reference_frame: "map"             # Frame de referencia global
+
+waypoint_visualizer:
+  ros__parameters:
+    waypoints_file: "waypoints.yaml"
+    data_directory: "data"
+    publish_frequency: 1.0
+    use_slam: true
+    reference_frame: "map"
+
+record_waypoints:
+  ros__parameters:
+    sampling_mode: "distance"
+    min_distance_between_waypoints: 0.3    # Waypoint cada 30cm (era 10cm)
+    sampling_frequency: 5.0
+    output_file: "waypoints.yaml"
+    data_directory: "data"
+    use_slam: true                     # Grabar waypoints en coordenadas absolutas (map frame)
+    reference_frame: "map"             # Frame de referencia global

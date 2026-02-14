@@ -1,0 +1,162 @@
+Panels:
+  - Class: rviz_common/Displays
+    Help Height: 78
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Status1
+      Splitter Ratio: 0.5
+    Tree Height: 363
+  - Class: rviz_common/Selection
+    Name: Selection
+  - Class: rviz_common/Tool Properties
+    Expanded:
+      - /2D Goal Pose1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679
+  - Class: rviz_common/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz_common/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Line
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: rviz_common/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+      Marker Array Topic: /waypoint_follower/markers
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        {}
+      Update Interval: 0
+      Value: true
+    - Class: rviz_common/Marker
+      Enabled: true
+      Marker Topic: /waypoint_visualizer/waypoints
+      Name: Waypoints
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz_common/Marker
+      Enabled: true
+      Marker Topic: /waypoint_visualizer/trajectory
+      Name: Trajectory
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz_common/Marker
+      Enabled: true
+      Marker Topic: /waypoint_follower/markers
+      Name: Current Target
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: odom
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_common/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_common/MoveCamera
+    - Class: rviz_common/Select
+    - Class: rviz_common/FocusCamera
+    - Class: rviz_common/Measure
+      Class Name: rviz_common/Measure
+    - Class: rviz_common/SetInitialPose
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /initialpose
+    - Class: rviz_common/SetGoal
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /goal_pose
+    - Class: rviz_common/PublishPoint
+      Single click publishing: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz_common/Orbit
+      Distance: 15
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.0500000007
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Pitch: 0.785398
+      Target Frame: <Fixed Frame>
+      Yaw: 0.785398
+    Saved Views: {}
+Window Geometry:
+  Displays:
+    collapsed: false
+    height: 846
+    width: 1552
+  Height: 1056
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd0000000400000000000002ba0000037afc020000000bfb0000001200530065006c0065006300740069006f006e00000000410000009a0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001b0000001f60000015f00fffffffb000000120056006900650077007300200054006100620000000168000000c90000010000fffffffb0000001200440069007300700006c00610079007300000003b5000000c70000010000fffffffb0000002000730065006c0065006300740069006f006e0000012c000000e90000005c00fffffffb0000002000720065006d00690074002000720065006500640065006600000003000000020000000000fffffffb0000000a0043006f006d00740065007e000000038e0000015d0000000000fffffffb000000100054006f006f006c002000500072006f007000000003000000020000000000fffffffb0000000a0043006100640065006f006e00000003000000020000000000fffffffc00000000000002ba0000000000fffffffa000000000200000002fb0000001a004d006f0064006500200053006500620000000055000000350000005c00fffffffb0000001200440069007300700006c006100790000000369000001e70000010000ffffff000002ba0000000000000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00420061007200000000000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+    height: 318
+    width: 313
+  Tool Properties:
+    collapsed: false
+    height: 318
+    width: 373
+  Views:
+    collapsed: false
+    height: 318
+    width: 373

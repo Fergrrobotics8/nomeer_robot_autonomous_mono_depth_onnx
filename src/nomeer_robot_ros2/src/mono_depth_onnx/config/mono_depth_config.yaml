@@ -1,0 +1,46 @@
+/**:
+  ros__parameters:
+    # Image Source Configuration
+    image_source:
+      source_type: "folder"  # Options: "video", "folder", "webcam"
+      source_path: "data/images"  # Path to video file or image folder
+      publish_frequency: 10.0  # Hz
+      image_width: 640
+      image_height: 480
+      loop_video: true
+
+    # Depth Estimator Configuration
+    depth_estimator:
+      model_name: "midas_v21_small"  # Options: midas_v21_small
+      model_path: "models/midas_v21_small.onnx"
+      input_height: 256
+      input_width: 256
+      enable_gpu: false  # Set to true if CUDA available
+
+    # Depth Metric Configuration
+    depth_metric:
+      roi_height_ratio: 0.3  # Top 30% of image
+      roi_width_ratio: 0.5  # Center 50% of image width
+      min_depth_threshold: 0.1
+      max_depth_threshold: 0.9
+      outlier_filter_type: "median"  # Options: median, percentile, iqr
+      outlier_filter_size: 5
+      safety_depth_threshold: 0.3  # Below this = obstacle
+      obstacle_area_ratio: 0.1  # 10% of ROI must be obstacle
+      metrics_history_size: 100
+      results_directory: "results"
+
+    # Safety Configuration (optional)
+    safety:
+      enable_safety: true
+      min_safe_depth: 0.2
+      emergency_stop_depth: 0.1
+      reduce_speed_depth: 0.3
+      speed_reduction_factor: 0.5
+      log_safety_events: true
+
+    # Visualization
+    visualization:
+      display_window: true
+      window_width: 960
+      window_height: 540

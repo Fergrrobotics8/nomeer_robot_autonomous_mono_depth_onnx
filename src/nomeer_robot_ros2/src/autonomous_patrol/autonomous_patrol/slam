@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+"""
+SLAM Wrapper with reliable auto-save on Ctrl+C
+Ejecuta: ros2 run autonomous_patrol slam
+"""
+
+import subprocess
+import signal
+import sys
+import os
+
+HOME = os.path.expanduser("~")
+MAP_PATH = os.path.join(HOME, "ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/data/warehouse_map_serial")
+
+slam_process = None
+
+def get_mode():
+    if os.path.exists(f"{MAP_PATH}.posegraph") or os.path.exists(f"{MAP_PATH}.data"):
+        return 'localization'
+    else:
+        return 'mapping'
+
+def save_map():
+    print("\n[AUTO-SAVE] Guardando mapa...")
+    try:
+        subprocess.run(['ros2', 'run', 'autonomous_patrol', 'save_map.py'], timeout=10)
+        if os.path.exists(f"{MAP_PATH}.posegraph"):
+            size = os.path.getsize(f"{MAP_PATH}.posegraph")
+            print(f"[AUTO-SAVE] ✅ Mapa guardado: {size} bytes")
+    except Exception as e:
+        print(f"[AUTO-SAVE] Error: {e}")
+
+def sigint_handler(sig, frame):
+    global slam_process
+    print("\n[CONTROL] Guardando mapa antes de cerrar...")
+    
+    # Guardar PRIMERO mientras SLAM aún está vivo
+    if get_mode() == 'mapping':
+        save_map()
+    
+    # LUEGO cerrar SLAM
+    print("[CONTROL] Cerrando SLAM...")
+    if slam_process:
+        slam_process.terminate()
+        try:
+            slam_process.wait(timeout=2)
+        except:
+            slam_process.kill()
+    
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, sigint_handler)
+
+mode = get_mode()
+print(f"[INIT] Modo: {mode}")
+slam_process = subprocess.Popen(['ros2', 'launch', 'autonomous_patrol', 'slam.launch.py', f'mode:={mode}'])
+slam_process.wait()
