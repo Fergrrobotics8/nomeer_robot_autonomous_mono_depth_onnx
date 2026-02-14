@@ -107,13 +107,19 @@ def generate_launch_description():
     )
 
     # rviz2
+    rviz_config = os.path.join(
+        pkg_project_description,
+        "rviz",
+        "rviz.rviz"
+    )
+
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
         output="screen",
         name="sim_rviz2",
-        arguments=['-d', 'src/robot_description/rviz/rviz.rviz']    
-        )
+        arguments=['-d', rviz_config]
+    )
 
     return LaunchDescription([
         set_gazebo_path,

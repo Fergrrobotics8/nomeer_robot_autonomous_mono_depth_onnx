@@ -48,6 +48,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/robot_description/launch"
     "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/robot_description/models"
     "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/robot_description/worlds"
+    "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/robot_description/rviz"
     )
 endif()
 

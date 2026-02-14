@@ -4,6 +4,8 @@
 /home/ferradar/ros2_ws/install/robot_description/share/robot_description//models/nomeer_robot/robot.sdf
 /home/ferradar/ros2_ws/install/robot_description/share/robot_description//worlds/industrial-warehouse.sdf
 /home/ferradar/ros2_ws/install/robot_description/share/robot_description//worlds/empty.sdf
+/home/ferradar/ros2_ws/install/robot_description/share/robot_description//rviz/.placeholder
+/home/ferradar/ros2_ws/install/robot_description/share/robot_description//rviz/rviz.rviz
 /home/ferradar/ros2_ws/install/robot_description/share/ament_index/resource_index/package_run_dependencies/robot_description
 /home/ferradar/ros2_ws/install/robot_description/share/ament_index/resource_index/parent_prefix_path/robot_description
 /home/ferradar/ros2_ws/install/robot_description/share/robot_description/environment/ament_prefix_path.sh
