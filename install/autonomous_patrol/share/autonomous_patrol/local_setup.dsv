@@ -1,3 +1,1 @@
-source;share/autonomous_patrol/environment/ament_prefix_path.sh
-source;share/autonomous_patrol/environment/path.sh
-source;share/autonomous_patrol/environment/pythonpath.sh
+/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/local_setup.dsv

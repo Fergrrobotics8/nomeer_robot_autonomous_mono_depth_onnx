@@ -198,17 +198,17 @@ autonomous_patrol_uninstall/fast:
 .PHONY : autonomous_patrol_uninstall/fast
 
 #=============================================================================
-# Target rules for targets named ament_cmake_python_copy_autonomous_patrol
+# Target rules for targets named ament_cmake_python_symlink_autonomous_patrol
 
 # Build rule for target.
-ament_cmake_python_copy_autonomous_patrol: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_copy_autonomous_patrol
-.PHONY : ament_cmake_python_copy_autonomous_patrol
+ament_cmake_python_symlink_autonomous_patrol: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_symlink_autonomous_patrol
+.PHONY : ament_cmake_python_symlink_autonomous_patrol
 
 # fast build rule for target.
-ament_cmake_python_copy_autonomous_patrol/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_autonomous_patrol.dir/build.make CMakeFiles/ament_cmake_python_copy_autonomous_patrol.dir/build
-.PHONY : ament_cmake_python_copy_autonomous_patrol/fast
+ament_cmake_python_symlink_autonomous_patrol/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_autonomous_patrol.dir/build.make CMakeFiles/ament_cmake_python_symlink_autonomous_patrol.dir/build
+.PHONY : ament_cmake_python_symlink_autonomous_patrol/fast
 
 #=============================================================================
 # Target rules for targets named ament_cmake_python_build_autonomous_patrol_egg
@@ -237,7 +237,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... ament_cmake_python_build_autonomous_patrol_egg"
-	@echo "... ament_cmake_python_copy_autonomous_patrol"
+	@echo "... ament_cmake_python_symlink_autonomous_patrol"
 	@echo "... autonomous_patrol_uninstall"
 	@echo "... uninstall"
 .PHONY : help

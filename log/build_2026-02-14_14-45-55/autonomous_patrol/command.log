@@ -1,0 +1,4 @@
+Invoking command in '/home/ferradar/ros2_ws/build/autonomous_patrol': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ferradar/ros2_ws/build/autonomous_patrol -- -j6 -l6
+Invoked command in '/home/ferradar/ros2_ws/build/autonomous_patrol' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ferradar/ros2_ws/build/autonomous_patrol -- -j6 -l6
+Invoking command in '/home/ferradar/ros2_ws/build/autonomous_patrol': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ferradar/ros2_ws/build/autonomous_patrol
+Invoked command in '/home/ferradar/ros2_ws/build/autonomous_patrol' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ferradar/ros2_ws/build/autonomous_patrol

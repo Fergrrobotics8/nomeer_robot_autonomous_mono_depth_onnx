@@ -43,19 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol/environment" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/pythonpath.sh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol/environment" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/pythonpath.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/local/lib/python3.10/dist-packages/autonomous_patrol-0.0.1-py3.10.egg-info" TYPE DIRECTORY FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_python/autonomous_patrol/autonomous_patrol.egg-info/")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/local/lib/python3.10/dist-packages/autonomous_patrol" TYPE DIRECTORY FILES "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/" REGEX "/[^/]*\\.pyc$" EXCLUDE REGEX "/\\_\\_pycache\\_\\_$" EXCLUDE)
+  include("/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -64,81 +52,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
         "/usr/bin/python3" "-m" "compileall"
         "/home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol"
       )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/autonomous_patrol" TYPE PROGRAM FILES
-    "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/record_waypoints_node.py"
-    "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/follow_waypoints_node.py"
-    "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/visualizer_node.py"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol" TYPE DIRECTORY FILES "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/launch")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol" TYPE DIRECTORY FILES "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/config")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/autonomous_patrol")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/autonomous_patrol")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol/environment" TYPE FILE FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol/environment" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/ament_prefix_path.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol/environment" TYPE FILE FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol/environment" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/path.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/local_setup.bash")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/local_setup.sh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/local_setup.zsh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/local_setup.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_environment_hooks/package.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_index/share/ament_index/resource_index/packages/autonomous_patrol")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol/cmake" TYPE FILE FILES
-    "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_core/autonomous_patrolConfig.cmake"
-    "/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_core/autonomous_patrolConfig-version.cmake"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autonomous_patrol" TYPE FILE FILES "/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

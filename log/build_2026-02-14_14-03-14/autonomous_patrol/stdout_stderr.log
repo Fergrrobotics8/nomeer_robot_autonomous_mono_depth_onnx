@@ -1,0 +1,10 @@
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ferradar/ros2_ws/build/autonomous_patrol
+failed to create symbolic link '/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_python/autonomous_patrol/autonomous_patrol' because existing path cannot be removed: Is a directory
+gmake[2]: *** [CMakeFiles/ament_cmake_python_symlink_autonomous_patrol.dir/build.make:70: CMakeFiles/ament_cmake_python_symlink_autonomous_patrol] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:138: CMakeFiles/ament_cmake_python_symlink_autonomous_patrol.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

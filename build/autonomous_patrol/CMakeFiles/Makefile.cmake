@@ -60,6 +60,14 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/opt/ros/humble/share/ament_cmake_core/cmake/index/ament_index_register_package.cmake"
   "/opt/ros/humble/share/ament_cmake_core/cmake/index/ament_index_register_resource.cmake"
   "/opt/ros/humble/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py"
+  "/opt/ros/humble/share/ament_cmake_core/cmake/symlink_install/ament_cmake_symlink_install.cmake.in"
+  "/opt/ros/humble/share/ament_cmake_core/cmake/symlink_install/ament_cmake_symlink_install_append_install_code.cmake"
+  "/opt/ros/humble/share/ament_cmake_core/cmake/symlink_install/ament_cmake_symlink_install_directory.cmake"
+  "/opt/ros/humble/share/ament_cmake_core/cmake/symlink_install/ament_cmake_symlink_install_files.cmake"
+  "/opt/ros/humble/share/ament_cmake_core/cmake/symlink_install/ament_cmake_symlink_install_programs.cmake"
+  "/opt/ros/humble/share/ament_cmake_core/cmake/symlink_install/ament_cmake_symlink_install_targets.cmake"
+  "/opt/ros/humble/share/ament_cmake_core/cmake/symlink_install/ament_cmake_symlink_install_uninstall_script.cmake.in"
+  "/opt/ros/humble/share/ament_cmake_core/cmake/symlink_install/install.cmake"
   "/opt/ros/humble/share/ament_cmake_core/cmake/uninstall_target/ament_cmake_uninstall_target.cmake.in"
   "/opt/ros/humble/share/ament_cmake_core/cmake/uninstall_target/ament_cmake_uninstall_target_append_uninstall_code.cmake"
   "/opt/ros/humble/share/ament_cmake_export_definitions/cmake/ament_cmake_export_definitions-extras.cmake"
@@ -160,6 +168,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "ament_cmake_core/stamps/templates_2_cmake.py.stamp"
   "ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake"
+  "ament_cmake_symlink_install/ament_cmake_symlink_install.cmake"
+  "ament_cmake_symlink_install/ament_cmake_symlink_install_uninstall_script.cmake"
   "CTestConfiguration.ini"
   "ament_cmake_core/stamps/pythonpath.sh.in.stamp"
   "ament_cmake_environment_hooks/pythonpath.sh"
@@ -187,6 +197,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/uninstall.dir/DependInfo.cmake"
   "CMakeFiles/autonomous_patrol_uninstall.dir/DependInfo.cmake"
-  "CMakeFiles/ament_cmake_python_copy_autonomous_patrol.dir/DependInfo.cmake"
+  "CMakeFiles/ament_cmake_python_symlink_autonomous_patrol.dir/DependInfo.cmake"
   "CMakeFiles/ament_cmake_python_build_autonomous_patrol_egg.dir/DependInfo.cmake"
   )

@@ -1,1 +1,1 @@
-rclpy;geometry_msgs;nav_msgs;visualization_msgs;std_msgs;tf2;tf2_geometry_msgs;python3-yaml;ament_lint_auto;ament_lint_common
+rclpy;geometry_msgs;nav_msgs;visualization_msgs;std_msgs;tf2;tf2_ros;tf2_geometry_msgs;slam_toolbox;python3-yaml;ament_lint_auto;ament_lint_common

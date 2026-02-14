@@ -1,1 +1,1 @@
-rclpy:ros2launch:ros_gz_bridge:ros_gz_sim:rviz2:tf2
+rclpy:ros2launch:ros_gz_bridge:ros_gz_sim:rviz2:slam_toolbox:tf2

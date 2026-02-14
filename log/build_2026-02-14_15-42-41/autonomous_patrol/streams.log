@@ -1,0 +1,52 @@
+[0.027s] Invoking command in '/home/ferradar/ros2_ws/build/autonomous_patrol': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ferradar/ros2_ws/build/autonomous_patrol -- -j6 -l6
+[0.192s] Built target ament_cmake_python_symlink_autonomous_patrol
+[0.884s] running egg_info
+[0.889s] writing autonomous_patrol.egg-info/PKG-INFO
+[0.889s] writing dependency_links to autonomous_patrol.egg-info/dependency_links.txt
+[0.889s] writing top-level names to autonomous_patrol.egg-info/top_level.txt
+[0.901s] reading manifest file 'autonomous_patrol.egg-info/SOURCES.txt'
+[0.903s] writing manifest file 'autonomous_patrol.egg-info/SOURCES.txt'
+[1.000s] Built target ament_cmake_python_build_autonomous_patrol_egg
+[1.027s] Invoked command in '/home/ferradar/ros2_ws/build/autonomous_patrol' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ferradar/ros2_ws/build/autonomous_patrol -- -j6 -l6
+[1.052s] Invoking command in '/home/ferradar/ros2_ws/build/autonomous_patrol': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ferradar/ros2_ws/build/autonomous_patrol
+[1.072s] -- Install configuration: ""
+[1.072s] -- Execute custom install script
+[1.072s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/environment/pythonpath.sh
+[1.073s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/environment/pythonpath.dsv
+[1.074s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol-0.0.1-py3.10.egg-info/PKG-INFO
+[1.074s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol-0.0.1-py3.10.egg-info/SOURCES.txt
+[1.075s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol-0.0.1-py3.10.egg-info/dependency_links.txt
+[1.075s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol-0.0.1-py3.10.egg-info/top_level.txt
+[1.076s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol/__init__.py
+[1.079s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol/follow_waypoints_node.py
+[1.079s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol/record_waypoints_node.py
+[1.079s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol/visualizer_node.py
+[1.079s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/lib/autonomous_patrol/record_waypoints_node.py
+[1.079s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/lib/autonomous_patrol/follow_waypoints_node.py
+[1.079s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/lib/autonomous_patrol/visualizer_node.py
+[1.079s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/launch/follow_waypoints.launch.py
+[1.080s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/launch/record_waypoints.launch.py
+[1.080s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/launch/slam.launch.py
+[1.080s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/launch/visualize_waypoints.launch.py
+[1.080s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/config/autonomous_patrol_config.yaml
+[1.080s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/config/slam_toolbox_params.yaml
+[1.080s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/config/test_config.yaml
+[1.080s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/rviz/slam.rviz
+[1.082s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/rviz/waypoints.rviz
+[1.084s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/ament_index/resource_index/package_run_dependencies/autonomous_patrol
+[1.085s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/ament_index/resource_index/parent_prefix_path/autonomous_patrol
+[1.085s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/environment/ament_prefix_path.sh
+[1.086s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/environment/ament_prefix_path.dsv
+[1.086s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/environment/path.sh
+[1.088s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/environment/path.dsv
+[1.096s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/local_setup.bash
+[1.096s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/local_setup.sh
+[1.097s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/local_setup.zsh
+[1.097s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/local_setup.dsv
+[1.097s] -- Symlinking: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/package.dsv
+[1.110s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/ament_index/resource_index/packages/autonomous_patrol
+[1.110s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/cmake/autonomous_patrolConfig.cmake
+[1.111s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/cmake/autonomous_patrolConfig-version.cmake
+[1.111s] -- Up-to-date symlink: /home/ferradar/ros2_ws/install/autonomous_patrol/share/autonomous_patrol/package.xml
+[1.165s] Listing '/home/ferradar/ros2_ws/install/autonomous_patrol/local/lib/python3.10/dist-packages/autonomous_patrol'...
+[1.194s] Invoked command in '/home/ferradar/ros2_ws/build/autonomous_patrol' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ferradar/ros2_ws/build/autonomous_patrol

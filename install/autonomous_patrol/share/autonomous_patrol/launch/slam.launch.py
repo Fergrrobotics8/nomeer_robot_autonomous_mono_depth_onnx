@@ -1,0 +1,1 @@
+/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/launch/slam.launch.py

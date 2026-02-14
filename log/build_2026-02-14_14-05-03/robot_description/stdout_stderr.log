@@ -1,0 +1,25 @@
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description//config/ros_gz_bridge.yaml
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description//launch/robot.launch.py
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description//models/nomeer_robot/robot.config
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description//models/nomeer_robot/robot.sdf
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description//worlds/empty.sdf
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description//worlds/industrial-warehouse.sdf
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description//rviz/.placeholder
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description//rviz/rviz.rviz
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/ament_index/resource_index/package_run_dependencies/robot_description
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/ament_index/resource_index/parent_prefix_path/robot_description
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/environment/ament_prefix_path.sh
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/environment/ament_prefix_path.dsv
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/environment/path.sh
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/environment/path.dsv
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/local_setup.bash
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/local_setup.sh
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/local_setup.zsh
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/local_setup.dsv
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.dsv
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/ament_index/resource_index/packages/robot_description
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/cmake/robot_descriptionConfig.cmake
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/cmake/robot_descriptionConfig-version.cmake
+-- Symlinking: /home/ferradar/ros2_ws/install/robot_description/share/robot_description/package.xml
