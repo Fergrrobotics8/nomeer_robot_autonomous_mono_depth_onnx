@@ -10,12 +10,17 @@ def generate_launch_description():
     config_dir = os.path.join(mono_depth_dir, 'config')
     config_file = os.path.join(config_dir, 'mono_depth_config.yaml')
     
+    # Build absolute paths for data and models
+    data_dir = os.path.join(mono_depth_dir, 'data', 'images')
+    models_dir = os.path.join(mono_depth_dir, 'models')
+    model_path = os.path.join(models_dir, 'midas_v21_small.onnx')
+    
     # Image Source Node
     image_source_node = Node(
         package='mono_depth_onnx',
         executable='image_source_node.py',
         name='image_source',
-        parameters=[config_file],
+        parameters=[config_file, {'source_path': data_dir}],
         output='screen',
     )
     
@@ -24,7 +29,7 @@ def generate_launch_description():
         package='mono_depth_onnx',
         executable='depth_inference_node.py',
         name='depth_inference',
-        parameters=[config_file],
+        parameters=[config_file, {'model_path': model_path}],
         output='screen',
     )
     
