@@ -5,7 +5,7 @@ A ROS 2 Humble-based autonomous robotic system featuring:
 - **Real-time monocular depth estimation** using ONNX-accelerated AI (MiDaS)
 - **Obstacle detection** with emergency stop capabilities
 
-![Autonomous Robot Demo](assets/gazebo.gif)
+![Autonomous Robot Demo](assets/depth_mono_onnx.gif)
 
 ## Quick Start
 
