@@ -28,16 +28,16 @@ class DepthMetricNode(Node):
     def __init__(self):
         super().__init__('depth_metric')
         
-        # Declare parameters
-        self.declare_parameter('roi_x_start', 0.2)              # 20% from left
-        self.declare_parameter('roi_x_end', 0.8)                # 80% from left
-        self.declare_parameter('roi_y_start', 0.2)              # 20% from top
-        self.declare_parameter('roi_y_end', 0.8)                # 80% from top
-        self.declare_parameter('outlier_percentile_low', 5)     # Remove bottom 5%
-        self.declare_parameter('outlier_percentile_high', 95)   # Remove top 5%
-        self.declare_parameter('obstacle_threshold', 0.5)       # Depth < 0.5 = obstacle
+        # Declare parameters - these are read from config file
+        self.declare_parameter('roi_x_start', 0.15)              # 15% from left
+        self.declare_parameter('roi_x_end', 0.85)                # 85% from left
+        self.declare_parameter('roi_y_start', 0.15)              # 15% from top
+        self.declare_parameter('roi_y_end', 0.65)                # 65% from top (avoid floor)
+        self.declare_parameter('outlier_percentile_low', 5)      # Remove bottom 5%
+        self.declare_parameter('outlier_percentile_high', 95)    # Remove top 5%
+        self.declare_parameter('obstacle_threshold', 0.2)        # Depth < 0.2 = obstacle
         
-        # Get parameters
+        # Get parameters from config
         self.roi_x_start = self.get_parameter('roi_x_start').value
         self.roi_x_end = self.get_parameter('roi_x_end').value
         self.roi_y_start = self.get_parameter('roi_y_start').value
@@ -105,7 +105,7 @@ class DepthMetricNode(Node):
             min_depth = float(np.min(roi_filtered))
             avg_depth = float(np.mean(roi_filtered))
             median_depth = float(np.median(roi_filtered))
-            obstacle_detected = float(min_depth < self.obstacle_threshold)
+            obstacle_detected = float(median_depth > self.obstacle_threshold)
             
             # Publish metrics
             self._publish_metric(self.min_depth_pub, min_depth)
@@ -113,14 +113,20 @@ class DepthMetricNode(Node):
             self._publish_metric(self.median_depth_pub, median_depth)
             self._publish_metric(self.obstacle_pub, obstacle_detected)
             
-            # Log metrics periodically
+            # Log metrics periodically and ALWAYS when obstacle detected
             self.frame_count += 1
-            if self.frame_count % 30 == 0:
-                obstacle_str = "OBSTACLE" if obstacle_detected else "CLEAR"
+            
+            # Always log when obstacle detected
+            if obstacle_detected:
+                self.get_logger().warn(
+                    f'🚨 [OBSTACLE TRIGGER] Frame {self.frame_count}: '
+                    f'median={median_depth:.3f} > threshold={self.obstacle_threshold} ⚠️'
+                )
+            elif self.frame_count % 10 == 0:
                 self.get_logger().info(
                     f'Frame {self.frame_count}: '
                     f'min={min_depth:.3f} avg={avg_depth:.3f} median={median_depth:.3f} '
-                    f'[{obstacle_str}]'
+                    f'[median > {self.obstacle_threshold} = ✓ CLEAR]'
                 )
         
         except Exception as e:

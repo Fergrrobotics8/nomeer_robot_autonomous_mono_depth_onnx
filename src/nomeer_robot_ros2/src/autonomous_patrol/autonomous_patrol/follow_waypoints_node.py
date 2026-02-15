@@ -126,11 +126,36 @@ class FollowWaypointsNode(Node):
             self.get_logger().error('Failed to load waypoints. Node will not execute.')
             return
         
+        # State tracking
+        self.cancellation_reason = None  # 'completed', 'obstacle', or None
+        self.is_executing = False  # Currently following waypoints
+        self.last_median_depth = 0.0
+        self.obstacle_stops = 0  # Count emergency stops from depth detection
+        
         # Subscriptions
         self.odom_sub = self.create_subscription(
             Odometry,
             '/odom',
             self.odom_callback,
+            10
+        )
+        
+        # Depth safety subscription
+        from std_msgs.msg import Float32
+        self.obstacle_detected = False
+        self.obstacle_stop_triggered = False
+        
+        self.obstacle_sub = self.create_subscription(
+            Float32,
+            '/depth_metric/obstacle_detected',
+            self.obstacle_callback,
+            10
+        )
+        
+        self.median_depth_sub = self.create_subscription(
+            Float32,
+            '/depth_metric/median_frontal_depth',
+            self.median_depth_callback,
             10
         )
         
@@ -195,6 +220,24 @@ class FollowWaypointsNode(Node):
         qw = msg.pose.pose.orientation.w
         self.current_pose['yaw'] = self._quaternion_to_yaw(qx, qy, qz, qw)
 
+    def obstacle_callback(self, msg):
+        """Callback for obstacle detection from depth metric."""
+        from std_msgs.msg import Float32
+        self.obstacle_detected = bool(msg.data)
+        if self.obstacle_detected and not self.obstacle_stop_triggered and self.is_executing:
+            self.obstacle_stop_triggered = True
+            self.obstacle_stops += 1
+            self.get_logger().warn(
+                f'🚨 OBSTACLE DETECTED #{self.obstacle_stops} - EMERGENCY STOP ACTIVATED!\n'
+                f'   Median depth: {self.last_median_depth:.3f} (exceeded threshold)'
+            )
+            # Cancel the entire route when obstacle is detected during execution
+            self._execution_cancelled_by_obstacle()
+
+    def median_depth_callback(self, msg):
+        """Callback to track median depth value for logging."""
+        self.last_median_depth = msg.data
+
     def control_loop(self):
         """Main control loop"""
         if not self.waypoints or self.execution_complete:
@@ -237,7 +280,16 @@ class FollowWaypointsNode(Node):
                 self._execution_complete()
                 return
         
-        # Calculate control commands
+        # SAFETY: Check for obstacles from depth sensing
+        if self.obstacle_detected:
+            # Emergency stop - publish zero velocity
+            from geometry_msgs.msg import Twist
+            cmd_vel = Twist()
+            self.cmd_vel_pub.publish(cmd_vel)
+            self.get_logger().warn('⛔ OBSTACLE - Robot stopped due to depth detection')
+            return
+        
+        # Calculate control commands (only if no obstacle)
         cmd_vel = self._calculate_velocity_command(target_wp, distance)
         self.cmd_vel_pub.publish(cmd_vel)
         
@@ -293,6 +345,18 @@ class FollowWaypointsNode(Node):
         
         self.get_logger().info('All waypoints completed!')
         self._generate_metrics()
+
+    def _execution_cancelled_by_obstacle(self):
+        """Handle execution cancellation due to obstacle detection"""
+        self.cancellation_reason = 'obstacle'
+        
+        # Stop robot
+        cmd_vel = Twist()
+        self.cmd_vel_pub.publish(cmd_vel)
+        
+        self.get_logger().warn(
+            f'   Waypoint #{self.obstacle_stops} obstacle stop activated'
+        )
 
     def _calculate_velocity_command(self, target_wp: Waypoint, distance: float) -> Twist:
         """Calculate velocity command using PID control (proportional + integral + derivative)"""
@@ -486,6 +550,8 @@ class FollowWaypointsNode(Node):
                 'total_waypoints': len(self.waypoints),
                 'success': self.waypoints_reached == len(self.waypoints),
                 'execution_date': datetime.now().isoformat(),
+                'obstacle_stops': self.obstacle_stops,
+                'cancellation_reason': self.cancellation_reason,
             },
             'error_metrics': {
                 'mean_error_to_waypoint': mean_error,
@@ -523,6 +589,7 @@ class FollowWaypointsNode(Node):
             f'Waypoints: {self.waypoints_reached}/{len(self.waypoints)}\n'
             f'Mean error: {mean_error:.4f}m\n'
             f'Max error: {max_error:.4f}m\n'
+            f'Obstacle stops: {self.obstacle_stops}\n'
             f'Status: {"SUCCESS" if self.waypoints_reached == len(self.waypoints) else "INCOMPLETE"}'
         )
 
