@@ -1,13 +1,18 @@
 # Fergr Robot (based on Nomeer robot) - Autonomous Navigation with Monocular Depth Vision
 
-A complete autonomous robotic system built on ROS 2 Humble with integrated SLAM and autonomous navigation:
-- SLAM: Real-time simultaneous localization and mapping
+
+
+A complete autonomous robotic system built on ROS 2 Humble with integrated SLAM and autonomous navigation. The main parts of this projects are the following:
 - Part A: Waypoint-based autonomous navigation with trajectory recording
 - Part B: Real-time monocular depth estimation using ONNX-accelerated AI (MiDaS)
+- SLAM: Real-time simultaneous localization and mapping
 
 ## Quick Start
 
 ```bash
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws
+
 cd ~/ros2_ws
 source /opt/ros/humble/setup.bash
 
@@ -88,7 +93,7 @@ ros2 launch robot_description robot.launch.py
 ros2 run autonomous_patrol slam
 ```
 
-# IF YOU WANT TO RECORD WAYPOINTS (3 to 6)
+### IF YOU WANT TO RECORD WAYPOINTS (3 to 6)
 
 3. Terminal 3 - Teleoperate robot:
 ```bash
@@ -133,22 +138,6 @@ Edit configuration file for advanced settings:
 nano src/nomeer_robot_ros2/src/mono_depth_onnx/config/mono_depth_config.yaml
 ```
 
-
-### Playing Back Trajectory
-
-**No need to close anything!** Simply:
-
-
-1. In Terminal 4 (or a new Terminal 5), start the waypoint follower:
-```bash
-ros2 launch autonomous_patrol follow_waypoints.launch.py
-```
-
-3. The robot will automatically follow the saved trajectory. Watch the visualization in RViz that is already open
-
-**Metrics** are automatically saved to: `src/nomeer_robot_ros2/src/autonomous_patrol/results/metrics.json`
-
-
 Key parameters:
 - `roi_x_start/roi_x_end`: Region of interest (horizontal, 0-1)
 - `roi_y_start/roi_y_end`: Region of interest (vertical, 0-1)
@@ -165,92 +154,78 @@ The depth pipeline publishes:
 - `/depth_metric/avg_frontal_depth` - Average depth in ROI (0-1)
 - `/depth_metric/obstacle_detected` - Boolean flag (1=obstacle, 0=clear)
 
-## Integration: SLAM + Autonomous Navigation + Depth Vision with Safety
+## Playing Back Trajectory
 
-**Complete system with obstacle detection and emergency stop**
+**No need to close anything!** Simply:
 
-### Launch Sequence (Follow order and timings!)
 
-#### Step 1: Robot Simulator (Terminal 1)
+1. In Terminal 4 (or a new Terminal 5), start the waypoint follower:
+```bash
+ros2 launch autonomous_patrol follow_waypoints.launch.py
+```
+
+3. The robot will automatically follow the saved trajectory. Watch the visualization in RViz that is already open
+
+**Metrics** are automatically saved to: `src/nomeer_robot_ros2/src/autonomous_patrol/results/metrics.json`
+
+
+
+## Integration: Complete System (SLAM + Navigation + Depth with Safety)
+
+**Run all components together for full autonomous navigation with obstacle detection**
+
+### Combined Launch Sequence
+
+Follow the exact order below with 5-second waits between each step:
+
+**Terminal 1: Start Robot Simulator**
 ```bash
 ros2 launch robot_description robot.launch.py
 ```
-**Expected output:**
-- Gazebo window opens with simulated robot
-- RViz window opens with visualization
-- ⚠️ **IMPORTANT:** Click the PLAY button (▶) in Gazebo to start physics simulation
-- **Duration:** 5-10 seconds to stabilize
+- Press PLAY in Gazebo when it opens
+- Wait 5 seconds
 
-#### Step 2: SLAM (Terminal 2) - Wait 5 seconds after step 1
+**Terminal 2: Start SLAM (Mapping)**
 ```bash
-# Start SLAM for real-time mapping
 ros2 run autonomous_patrol slam
 ```
-**Expected output:**
-- SLAM output: "Starting SLAM" message
-- RViz shows building map in green points
-- **Duration:** 5-10 seconds to initialize
+- Wait 5 seconds
 
-#### Step 3: Depth Inference (Terminal 3) - Wait 5 seconds after step 2
+**Terminal 3: Start Depth Inference with Obstacle Detection**
 ```bash
-# Start depth inference with obstacle detection (MUST be running before follow_waypoints)
 ros2 launch mono_depth_onnx inference.launch.py
 ```
-**Expected output:**
-- Depth nodes initialize model (MiDaS loads ~35MB)
-- Terminal shows frame processing messages
-- Depth colored visualization appears in RViz
-- Obstacle detection ready
-- **Duration:** 10-15 seconds for model load and initialization
+- Wait 5 seconds (for model to load)
 
-#### Step 4: Autonomous Navigation (Terminal 4) - Wait 5 seconds after step 3
+**Terminal 4: Start Autonomous Navigation with Safety**
 ```bash
-# Start waypoint follower with integrated safety (depth inference MUST be running)
 ros2 launch autonomous_patrol follow_waypoints.launch.py
 ```
-**Expected output:**
-- "Starting autonomous navigation" message
-- Robot begins moving in Gazebo
-- RViz shows waypoints in red and current heading
-- Terminal logs each waypoint: "Waypoint N reached"
-- If obstacle nearby: `🚨 OBSTACLE DETECTED - EMERGENCY STOP!`
 
-### How It Works
+### Complete System Behavior
 
-1. **Robot moves along recorded waypoints** - Following trajectory from `waypoints.yaml`
-2. **Depth sensor runs continuously** - Analyzing center region (15%-85% x 15%-65%)
-3. **If obstacle detected** (median depth > 0.6 = RED in visualization):
-   - ⛔ **IMMEDIATE STOP** - Robot velocity set to zero
-   - 🚨 Alert logged with counter: `OBSTACLE DETECTED #{count} - EMERGENCY STOP ACTIVATED!`
-   - Recorded in `metrics.json` for post-analysis
-4. **Once obstacle cleared**, autonomous navigation automatically resumes
+Once all 4 terminals are running:
 
-### Safety Configuration
+1. **Autonomous Movement** - Robot follows recorded waypoints from `waypoints.yaml`
+2. **Continuous Depth Analysis** - Depth model analyzes center region in real-time
+3. **Obstacle Detection** - If median depth > 0.7 (RED in visualization):
+   - ⛔ **EMERGENCY STOP** - Robot velocity immediately set to zero
+   - 🚨 Alert logged: `OBSTACLE DETECTED #{count} - EMERGENCY STOP ACTIVATED!`
+   - Obstacle event recorded in `metrics.json`
+4. **Automatic Resume** - Once obstacle is cleared, navigation resumes
 
-Adjust detection sensitivity in config file:
+### Configuration for Safety Tuning
+
+Adjust obstacle sensitivity in:
 ```yaml
 # ~/ros2_ws/src/nomeer_robot_ros2/src/mono_depth_onnx/config/mono_depth_config.yaml
 depth_metric:
-  # Obstacle threshold: median depth > this value triggers STOP
-  # Range: 0.0 (far, blue) to 1.0 (close, red)
-  obstacle_threshold: 0.6  # Default: detects red objects
-  
-  # Region of Interest (center of image, avoiding sides/floor)
-  roi_x_start: 0.15        # 15% from left
-  roi_x_end: 0.85          # 85% from left
-  roi_y_start: 0.15        # 15% from top
-  roi_y_end: 0.65          # 65% from top (avoids floor)
+  obstacle_threshold: 0.7  # Increase for less sensitivity, decrease for more
+  roi_x_start: 0.15
+  roi_x_end: 0.85
+  roi_y_start: 0.15
+  roi_y_end: 0.65
 ```
-
-### Metrics & Results
-
-After execution completes, check:
-- **Waypoint metrics:** `src/nomeer_robot_ros2/src/autonomous_patrol/results/metrics.json`
-  - `waypoints_completed` - How many waypoints were reached
-  - `total_distance` - Distance traveled
-  - `obstacle_stops` - Number of emergency stops triggered ⚠️
-- **Real-time monitoring:** Watch `/depth_metric/obstacle_detected` topic during execution
-- **Depth visualization:** Green box in RViz shows analyzed ROI region
 
 ## SLAM: Simultaneous Localization and Mapping
 
