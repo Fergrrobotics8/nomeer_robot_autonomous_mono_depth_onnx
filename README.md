@@ -1,4 +1,4 @@
-# Fergr Robot - Autonomous Waypoint Navigation
+# Fergrbot (based on Nomeer Robot) - Autonomous Waypoint Navigation
 
 A ROS 2 Humble-based autonomous robotic system featuring:
 - **Waypoint-based autonomous navigation** with trajectory recording and playback
