@@ -11,6 +11,7 @@ from typing import List
 
 import rclpy
 from rclpy.node import Node
+from ament_index_python.packages import get_package_share_directory
 from visualization_msgs.msg import Marker, MarkerArray
 from geometry_msgs.msg import Point
 from std_msgs.msg import ColorRGBA
@@ -32,14 +33,9 @@ class VisualizerNode(Node):
         data_dir_param = self.get_parameter('data_directory').value
         self.publish_freq = self.get_parameter('publish_frequency').value
         
-        # Build path to source data directory (portable, no hardcoded usernames)
-        # Assumes project is in ~/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/
-        home_dir = os.path.expanduser("~")
-        self.data_dir = os.path.join(
-            home_dir,
-            "ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol",
-            data_dir_param
-        )
+        # Build path to source data directory (portable via ROS 2)
+        pkg_src_path = get_package_share_directory('autonomous_patrol')
+        self.data_dir = os.path.join(pkg_src_path, data_dir_param)
         
         # File path and modification tracking (for hot-reload)
         self.file_path = os.path.join(self.data_dir, self.waypoints_file)

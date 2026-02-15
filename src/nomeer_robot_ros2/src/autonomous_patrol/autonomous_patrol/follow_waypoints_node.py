@@ -16,6 +16,7 @@ import time
 
 import rclpy
 from rclpy.node import Node
+from ament_index_python.packages import get_package_share_directory
 from geometry_msgs.msg import Twist, Point
 from nav_msgs.msg import Odometry
 from std_msgs.msg import String, Int32
@@ -73,10 +74,8 @@ class FollowWaypointsNode(Node):
         self.control_freq = self.get_parameter('control_frequency').value
         self.use_yaw_control = self.get_parameter('use_yaw_control').value
         
-        # Build paths to source data and results directories (portable, no hardcoded usernames)
-        # Assumes project is in ~/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/
-        home_dir = os.path.expanduser("~")
-        pkg_src_path = os.path.join(home_dir, "ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol")
+        # Build paths to source data and results directories (portable via ROS 2)
+        pkg_src_path = get_package_share_directory('autonomous_patrol')
         self.data_dir = os.path.join(pkg_src_path, data_dir_param)
         self.results_dir = os.path.join(pkg_src_path, results_dir_param)
         

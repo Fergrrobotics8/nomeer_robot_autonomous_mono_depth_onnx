@@ -1,0 +1,10 @@
+build/
+install/
+log/
+results/
+data/
+.venv/
+venv_robot/
+*.pyc
+__pycache__/
+.DS_Store

@@ -14,6 +14,7 @@ from dataclasses import dataclass, asdict
 
 import rclpy
 from rclpy.node import Node
+from ament_index_python.packages import get_package_share_directory
 from nav_msgs.msg import Odometry
 from std_msgs.msg import String
 
@@ -66,14 +67,9 @@ class RecordWaypointsNode(Node):
         self.output_file = self.get_parameter('output_file').value
         data_dir_param = self.get_parameter('data_directory').value
         
-        # Build path to source data directory (portable, no hardcoded usernames)
-        # Assumes project is in ~/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/
-        home_dir = os.path.expanduser("~")
-        self.data_dir = os.path.join(
-            home_dir, 
-            "ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol",
-            data_dir_param
-        )
+        # Build path to source data directory (portable via ROS 2)
+        pkg_src_path = get_package_share_directory('autonomous_patrol')
+        self.data_dir = os.path.join(pkg_src_path, data_dir_param)
         
         # Create data directory if it doesn't exist
         if not os.path.exists(self.data_dir):
