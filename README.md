@@ -76,24 +76,23 @@ rosdep update
 
 ## Quick Start (After System Setup)
 
-### Step 1: Create workspace and source ROS 2
+### Step 1: Create workspace
 
 ```bash
 mkdir -p ~/ros2_ws
+cd ~/ros2_ws
 source /opt/ros/humble/setup.bash
 ```
 
 ### Step 2: Clone the robot repository
 
-Clone the repository into the `ros2_ws` directory:
+Clone the repository into the current directory:
 
 ```bash
-cd ~
-git clone https://github.com/Fergrrobotics8/robot_autonomous_patrol_mono_depth_onnx.git ros2_ws
-cd ~/ros2_ws
+git clone https://github.com/Fergrrobotics8/robot_autonomous_patrol_mono_depth_onnx.git .
 ```
 
-This command downloads the complete project structure (including `src/` and all packages) into `~/ros2_ws/`.
+The `.` (dot) clones the repository contents directly into `~/ros2_ws/` without creating an extra subdirectory.
 
 ### Step 3: Install system and ROS dependencies
 
