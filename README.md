@@ -180,6 +180,26 @@ ros2 launch autonomous_patrol record_waypoints.launch.py
 
 Waypoints saved to: `src/nomeer_robot_ros2/src/autonomous_patrol/data/waypoints.yaml`
 
+### Waypoint Recording Configuration
+
+Edit the recording parameters:
+```bash
+gedit src/nomeer_robot_ros2/src/autonomous_patrol/config/autonomous_patrol_config.yaml
+
+```
+
+Key parameters under `record_waypoints`:
+- `sampling_frequency: 5.0` - Sampling rate in Hz (5 Hz = one waypoint every 200ms)
+- `min_distance_between_waypoints: 0.1` - Minimum distance in meters (ignores waypoints closer than 0.1m)
+- `sampling_mode: "distance"` - Can be `"distance"` or `"frequency"` for recording strategy
+
+
+After modifying the config, rebuild and re-source:
+```bash
+colcon build
+source install/setup.bash
+```
+
 
 
 ## Part B: Monocular Depth Vision with AI
@@ -205,7 +225,7 @@ The viewer displays:
 
 Edit configuration file for advanced settings:
 ```bash
-nano src/nomeer_robot_ros2/src/mono_depth_onnx/config/mono_depth_config.yaml
+gedit src/nomeer_robot_ros2/src/mono_depth_onnx/config/mono_depth_config.yaml
 ```
 
 Key parameters:
