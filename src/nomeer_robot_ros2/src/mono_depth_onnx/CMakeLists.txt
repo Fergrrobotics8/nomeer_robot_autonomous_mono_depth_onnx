@@ -23,7 +23,7 @@ install(PROGRAMS
   DESTINATION lib/${PROJECT_NAME}
 )
 
-install(DIRECTORY launch config models assets scripts
+install(DIRECTORY launch config models scripts
   DESTINATION share/${PROJECT_NAME}
 )
 
