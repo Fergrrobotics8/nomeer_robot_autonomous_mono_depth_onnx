@@ -18,13 +18,18 @@ mv ros2_ws ros2_ws_odom
 mkdir ros2_ws
 cd ros2_ws
 git clone -b slam https://github.com/Fergrrobotics8/robot_autonomous_patrol_mono_depth_onnx.git .
+colcon build
+source install/setup.bash
 ```
 
 This command:
 - Backs up your current main branch (odometry-based) workspace to `ros2_ws_odom`
 - Creates a new `ros2_ws` directory
 - Clones the SLAM branch contents directly into `ros2_ws` using the dot (`.`)
-- Ready to use immediately after cloning
+- Builds all packages
+- Sources the installation
+
+**After upgrading, skip to [Part A: Autonomous Waypoint Navigation](#part-a-autonomous-waypoint-navigation)** — no need to repeat system setup or Quick Start steps.
 
 ---
 
