@@ -10,7 +10,7 @@ A ROS 2 Humble-based autonomous robotic system featuring:
 
 ## Upgrading from Main Branch to SLAM
 
-If you already have `ros2_ws` with the **main branch** installed, simply rename your workspace to `ros2_ws_odom` and clone the SLAM branch:
+If you already have `ros2_ws` with the **main branch** installed, follow these steps:
 
 **Step 1:** Backup your current workspace
 ```bash
@@ -29,31 +29,28 @@ cd ros2_ws
 git clone -b slam https://github.com/Fergrrobotics8/robot_autonomous_patrol_mono_depth_onnx.git .
 ```
 
-**Step 4:** Build and source
+**Step 4:** Install SLAM Toolbox
+```bash
+sudo apt install ros-humble-slam-toolbox -y
+```
+
+**Step 5:** Build all packages
 ```bash
 colcon build
-
 ```
+
 **Wait for the build to complete, then:**
 
+**Step 6:** Source the installation
 ```bash
 source install/setup.bash
 ```
-
-
-This process:
-- Backs up your current main branch (odometry-based) workspace to `ros2source install/setup.bash
-```_ws_odom`
-- Creates a new `ros2_ws` directory
-- Clones the SLAM branch contents directly into `ros2_ws` using the dot (`.`)
-- Builds all packages
-- Sources the installation
 
 **After upgrading, skip to [Part A: Autonomous Waypoint Navigation](#part-a-autonomous-waypoint-navigation)** — no need to repeat system setup or Quick Start steps.
 
 ---
 
-## System Setup from Scratch (Ubuntu)
+## Quick Start (After System Setup)
 
 **Prerequisites: Ubuntu 22.04.5 or similar**
 
@@ -151,14 +148,20 @@ rosdep install --from-paths src --ignore-src -r -y
 sudo pip3 install 'numpy<2' opencv-python onnxruntime PyYAML scipy torch timm onnx onnxscript
 ```
 
-### Step 5: Build all packages
+### Step 5: Install SLAM Toolbox
+
+```bash
+sudo apt install ros-humble-slam-toolbox -y
+```
+
+### Step 6: Build all packages
 
 ```bash
 colcon build
 source install/setup.bash
 ```
 
-### Step 6: (NOT Necessary) Download AI model (only if you don't have it already in the folder)
+### Step 7: (NOT Necessary) Download AI model (only if you don't have it already in the folder)
 
 > **Note:** If the model file `midas_v21_small.onnx` already exists in `src/nomeer_robot_ros2/src/mono_depth_onnx/models/`, you can skip this step. Run this only if you need to download or convert the model again.
 
