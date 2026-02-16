@@ -32,11 +32,18 @@ git clone -b slam https://github.com/Fergrrobotics8/robot_autonomous_patrol_mono
 **Step 4:** Build and source
 ```bash
 colcon build
+
+```
+**Wait for the build to complete, then:**
+
+```bash
 source install/setup.bash
 ```
 
+
 This process:
-- Backs up your current main branch (odometry-based) workspace to `ros2_ws_odom`
+- Backs up your current main branch (odometry-based) workspace to `ros2source install/setup.bash
+```_ws_odom`
 - Creates a new `ros2_ws` directory
 - Clones the SLAM branch contents directly into `ros2_ws` using the dot (`.`)
 - Builds all packages
