@@ -111,7 +111,7 @@ sudo pip3 install 'numpy<2' opencv-python onnxruntime PyYAML scipy torch timm on
 ### Step 5: Build all packages
 
 ```bash
-colcon build --packages-select autonomous_patrol mono_depth_onnx robot_description
+colcon build
 source install/setup.bash
 ```
 
