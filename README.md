@@ -8,6 +8,26 @@ A ROS 2 Humble-based autonomous robotic system featuring:
 
 ![Autonomous Robot Demo](assets/depth_mono_onnx.gif)
 
+## Upgrading from Main Branch to SLAM
+
+If you already have `ros2_ws` with the **main branch** installed, simply rename your workspace to `ros2_ws_odom` and clone the SLAM branch:
+
+```bash
+cd ~
+mv ros2_ws ros2_ws_odom
+mkdir ros2_ws
+cd ros2_ws
+git clone -b slam https://github.com/Fergrrobotics8/robot_autonomous_patrol_mono_depth_onnx.git .
+```
+
+This command:
+- Backs up your current main branch (odometry-based) workspace to `ros2_ws_odom`
+- Creates a new `ros2_ws` directory
+- Clones the SLAM branch contents directly into `ros2_ws` using the dot (`.`)
+- Ready to use immediately after cloning
+
+---
+
 ## System Setup from Scratch (Ubuntu)
 
 **Prerequisites: Ubuntu 22.04.5 or similar**
