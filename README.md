@@ -7,6 +7,8 @@ A complete autonomous robotic system built on ROS 2 Humble with integrated SLAM 
 - Part B: Real-time monocular depth estimation using ONNX-accelerated AI (MiDaS)
 - SLAM: Real-time simultaneous localization and mapping
 
+![Autonomous Robot Demo](assets/depth_mono_onnx.gif)
+
 ## Quick Start
 
 ```bash
