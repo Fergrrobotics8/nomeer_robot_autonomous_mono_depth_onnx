@@ -1,8 +1,5 @@
 # Fergrbot (based on Nomeer Robot) - Autonomous Waypoint Navigation
-```bash
-apt show ros-humble-robot-state-publisher | grep Version
-ros2 run robot_state_publisher robot_state_publisher --ros-args -p use_sim_time:=true --log-level DEBUG
-```
+
 
 A ROS 2 Humble-based autonomous robotic system featuring:
 - **Waypoint-based autonomous navigation** with trajectory recording and playback
