@@ -1,1 +1,0 @@
-# Mono Depth ONNX package

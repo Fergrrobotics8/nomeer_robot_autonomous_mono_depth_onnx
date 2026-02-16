@@ -1,4 +1,0 @@
-source;share/mono_depth_onnx/local_setup.bash
-source;share/mono_depth_onnx/local_setup.dsv
-source;share/mono_depth_onnx/local_setup.sh
-source;share/mono_depth_onnx/local_setup.zsh
