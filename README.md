@@ -85,7 +85,7 @@ source /opt/ros/humble/setup.bash
 # Initial setup (one time)
 sudo apt update
 rosdep install --from-paths src --ignore-src -r -y
-pip3 install 'numpy<2' opencv-python onnxruntime PyYAML scipy torch timm onnx onnxscript
+sudo pip3 install 'numpy<2' opencv-python onnxruntime PyYAML scipy torch timm onnx onnxscript
 
 # Build packages
 colcon build --packages-select autonomous_patrol mono_depth_onnx robot_description
@@ -108,52 +108,9 @@ echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
 1. Run `colcon build` to rebuild packages
 2. Source the setup in your current terminal: `source install/setup.bash` (or close and reopen terminal)
 
-
-## Setup Instructions
-
-> **Prerequisites:** ROS 2 Humble must be installed. See [System Setup from Scratch](#system-setup-from-scratch-fresh-ubuntu) if doing a fresh installation.
-
-### Initial Configuration (Once)
-
-This assumes ROS 2 Humble is already installed.
-
-1. Source ROS 2 Humble:
-```bash
-source /opt/ros/humble/setup.bash
-```
-
-2. Install project dependencies:
-```bash
-sudo apt update
-rosdep install --from-paths src --ignore-src -r -y
-sudo apt install -y ros-humble-teleop-twist-keyboard
-```
-
-Note: `rosdep install` automatically handles all Gazebo dependencies (including `ros-humble-gazebo-dev`, `ros-gz-sim`, `ros-gz-bridge` for Harmonic).
-
-**Important:** For the following steps, ensure you are running with sudo or elevated permissions to avoid pip user-mode warnings.
-
-3. Install Python dependencies:
-```bash
-sudo pip3 install 'numpy<2' opencv-python onnxruntime PyYAML scipy torch timm onnx onnxscript
-```
-
-4. Build all packages:
-```bash
-cd ~/ros2_ws
-colcon build --packages-select autonomous_patrol mono_depth_onnx robot_description
-source install/setup.bash
-```
-
-5. Download AI model:
-```bash
-cd src/nomeer_robot_ros2/src/mono_depth_onnx
-python3 scripts/download_midas_model.py
-```
-
 ### Every Session
 
-In each new terminal:
+In each new terminal (unless you added the auto-setup line above):
 ```bash
 cd ~/ros2_ws
 source /opt/ros/humble/setup.bash
