@@ -249,7 +249,13 @@ ros2 launch autonomous_patrol follow_waypoints.launch.py
 
 ## Obstacle Detection Configuration
 
-The autonomous navigation system includes real-time obstacle detection using monocular depth estimation. Adjust sensitivity in:
+The autonomous navigation system includes real-time obstacle detection using monocular depth estimation:
+- During waypoint following, if frontal depth median falls below the configured threshold, the robot **stops immediately**
+- Obstacle event is logged in metrics.json at
+```
+ ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/results/metrics.json
+ ```
+- Configure sensitivity in:
 
 ```yaml
 # ~/ros2_ws/src/nomeer_robot_ros2/src/mono_depth_onnx/config/mono_depth_config.yaml
