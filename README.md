@@ -131,9 +131,11 @@ sudo apt install -y ros-humble-teleop-twist-keyboard
 
 Note: `rosdep install` automatically handles all Gazebo dependencies (including `ros-humble-gazebo-dev`, `ros-gz-sim`, `ros-gz-bridge` for Harmonic).
 
+**Important:** For the following steps, ensure you are running with sudo or elevated permissions to avoid pip user-mode warnings.
+
 3. Install Python dependencies:
 ```bash
-pip3 install 'numpy<2' opencv-python onnxruntime PyYAML scipy torch timm onnx onnxscript
+sudo pip3 install 'numpy<2' opencv-python onnxruntime PyYAML scipy torch timm onnx onnxscript
 ```
 
 4. Build all packages:
@@ -384,7 +386,7 @@ This project has been successfully tested on:
 - Download: [ubuntu-22.04.5-desktop-amd64.iso](https://releases.ubuntu.com/jammy/ubuntu-22.04.5-desktop-amd64.iso)
 - ROS 2 Humble
 - **Recommended VM Specs:**
-  - RAM: 4 GB (minimum 2 GB, but 4 GB recommended for smooth simulation)
+  - RAM: 10 GB
   - Video Memory (VRAM): 128 MB
   - CPUs: 6 cores (or as many as your host allows)
   - Disk: 100 GB (or 50 GB minimum)
