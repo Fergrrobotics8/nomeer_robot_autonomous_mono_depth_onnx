@@ -75,48 +75,40 @@ rosdep update
 
 ## Quick Start (After System Setup)
 
-### Step 1: Create workspace and navigate
+### Step 1: Install system and ROS dependencies
 
 ```bash
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws
-```
-
-### Step 2: Source ROS 2 environment
-
-```bash
-source /opt/ros/humble/setup.bash
-```
-
-### Step 3: Install system and ROS dependencies
-
-```bash
+cd ~/
 sudo apt update
 rosdep install --from-paths src --ignore-src -r -y
 ```
 
-### Step 4: Install Python dependencies
+### Step 2: Install Python dependencies
 
 ```bash
 sudo pip3 install 'numpy<2' opencv-python onnxruntime PyYAML scipy torch timm onnx onnxscript
 ```
 
-### Step 5: Clone the robot repository
+### Step 3: Clone the robot repository
+
+Clone the repository into the `ros2_ws` directory:
 
 ```bash
 cd ~
-git clone https://github.com/Fergrrobotics8/ros2_ws.git
+git clone https://github.com/Fergrrobotics8/robot_autonomous_patrol_mono_depth_onnx.git ros2_ws
 cd ~/ros2_ws
 ```
 
-### Step 6: Build all packages
+This command downloads the complete project structure (including `src/` and all packages) into `~/ros2_ws/`.
+
+### Step 4: Build all packages
 
 ```bash
 colcon build --packages-select autonomous_patrol mono_depth_onnx robot_description
 source install/setup.bash
 ```
 
-### Step 7: Download AI model
+### Step 5: Download AI model
 
 ```bash
 cd src/nomeer_robot_ros2/src/mono_depth_onnx
