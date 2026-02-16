@@ -331,12 +331,14 @@ src/nomeer_robot_ros2/
 - `/waypoint_follower/status` - Status string
 
 ### Vision/Depth (Part B)
-- `/rgb_image` - Input RGB image (for external sources)
-- `/camera/depth_estimated` - Depth map (mono16, 0-65535)
-- `/camera/depth_colored` - Colored depth visualization
-- `/depth_metric/min_frontal_depth` - Minimum frontal depth (0-1)
-- `/depth_metric/mean_depth` - Mean depth (0-1)
-- `/depth_metric/obstacle_detected` - Boolean: obstacle present
+- `/rgb_image` - Input RGB image from camera
+- `/camera/depth_estimated` - Raw depth map (mono16, 0-65535)
+- `/camera/depth_colored` - Colored depth visualization (BGR8)
+- `/camera_info` - Camera calibration information
+- `/depth_metric/median_frontal_depth` - Median depth in ROI (0-1)
+- `/depth_metric/min_frontal_depth` - Minimum depth in ROI (0-1)
+- `/depth_metric/avg_frontal_depth` - Average depth in ROI (0-1)
+- `/depth_metric/obstacle_detected` - Boolean flag (1=obstacle, 0=clear)
 
 
 
