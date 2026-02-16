@@ -1,1 +1,0 @@
-/home/ferradar/ros2_ws/src/nomeer_robot_ros2/src/autonomous_patrol/autonomous_patrol/pose_manager.py

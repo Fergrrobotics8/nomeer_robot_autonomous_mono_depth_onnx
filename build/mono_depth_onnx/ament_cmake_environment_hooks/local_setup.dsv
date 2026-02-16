@@ -1,3 +1,0 @@
-source;share/mono_depth_onnx/environment/ament_prefix_path.sh
-source;share/mono_depth_onnx/environment/path.sh
-source;share/mono_depth_onnx/environment/pythonpath.sh

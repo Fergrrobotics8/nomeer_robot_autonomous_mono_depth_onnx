@@ -1,1 +1,0 @@
-/home/ferradar/ros2_ws/build/autonomous_patrol/ament_cmake_python/autonomous_patrol/autonomous_patrol.egg-info/dependency_links.txt
